@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://fotoh4n78dg0"]
+
+[ext_resource type="Script" uid="uid://djp3seot464s1" path="res://Modules/UI/Scripts/MainMenuUI.gd" id="1_16xw8"]
+[ext_resource type="Texture2D" uid="uid://dxim3j5cgpvge" path="res://Modules/UI/Assets/MainMenu/Logo.png" id="1_u2tdc"]
+[ext_resource type="Texture2D" uid="uid://6vamsmnnv11f" path="res://Modules/UI/Assets/MainMenu/Classic.png" id="2_16xw8"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_16xw8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 148.0
+offset_top = 67.0
+offset_right = 491.0
+offset_bottom = 331.0
+scale = Vector2(0.999863, 0.999863)
+texture = ExtResource("1_u2tdc")
+
+[node name="ClassicButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 198.0
+offset_top = 424.0
+offset_right = 575.0
+offset_bottom = 586.0
+scale = Vector2(0.699082, 0.699082)
+texture_normal = ExtResource("2_16xw8")
+
+[connection signal="pressed" from="CanvasLayer/ClassicButton" to="." method="_on_classic_button_pressed"]

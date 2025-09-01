@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cofnh5nbfu1ge"]
+
+[ext_resource type="Script" uid="uid://balsm43am56p" path="res://Scripts/Globals/NBodySimulation.gd" id="1_0f5h7"]
+[ext_resource type="PackedScene" uid="uid://e5njbu5ok5ai" path="res://Modules/Player/Scenes/Player.tscn" id="1_b5ayd"]
+[ext_resource type="Script" uid="uid://b5qhq5gqbchpu" path="res://Scripts/Globals/Universe.gd" id="2_5lt6y"]
+[ext_resource type="Script" uid="uid://cje2h0jrqq6w1" path="res://Scripts/CameraController.gd" id="3_8k7wh"]
+[ext_resource type="PackedScene" uid="uid://cb2quddhy0rx1" path="res://Modules/Player/Assets/NearMissEncounter/NearMisser.tscn" id="4_qsjrb"]
+[ext_resource type="PackedScene" uid="uid://y6tjv5shi7a5" path="res://Modules/UI/Scenes/PlayUI.tscn" id="5_c264a"]
+[ext_resource type="PackedScene" uid="uid://qea3w21va8h2" path="res://Modules/UI/Scenes/RestartUI.tscn" id="6_6xh1p"]
+[ext_resource type="PackedScene" uid="uid://bl27iptfprrq3" path="res://Modules/CelestialBody/Scenes/CelestialBody.tscn" id="6_qsjrb"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_0f5h7")
+
+[node name="Universe" type="Node" parent="."]
+script = ExtResource("2_5lt6y")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI") instance=ExtResource("1_b5ayd")]
+camera = NodePath("../MainCamera")
+resetUI = NodePath("../MainCamera/CanvasLayer/RestartUi")
+PlayUI = NodePath("../MainCamera/CanvasLayer/PlayUi")
+initalVelocity = Vector2(0, -120)
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource("3_8k7wh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MainCamera"]
+
+[node name="PlayUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_c264a")]
+player = NodePath("../../../Player")
+
+[node name="RestartUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_6xh1p")]
+visible = false
+player = NodePath("../../../Player")
+
+[node name="CelestialBody" parent="." instance=ExtResource("6_qsjrb")]
+position = Vector2(-155, -151)
+scale = Vector2(4.70605, 4.70605)
+Mass = 2.0
+
+[node name="CelestialBody2" parent="." instance=ExtResource("6_qsjrb")]
+position = Vector2(230, -650)
+scale = Vector2(4.70605, 4.70605)
+Mass = 2.0
+
+[node name="CelestialBody3" parent="." instance=ExtResource("6_qsjrb")]
+position = Vector2(-175, -1232)
+scale = Vector2(4.70605, 4.70605)
+Mass = 2.0
+
+[node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
+player = NodePath("../Player")

@@ -1,0 +1,200 @@
+[gd_scene load_steps=16 format=3 uid="uid://y6tjv5shi7a5"]
+
+[ext_resource type="Script" uid="uid://c7kvghby57635" path="res://Modules/UI/Scripts/PlayUIManager.gd" id="1_ba1qd"]
+[ext_resource type="FontFile" uid="uid://cxe0bbixqghmp" path="res://Modules/UI/Assets/Belanosima-Regular.ttf" id="2_asov5"]
+[ext_resource type="FontFile" uid="uid://v5ppclwsn5md" path="res://Modules/UI/Assets/BlackHanSans-Regular.ttf" id="2_dq65k"]
+[ext_resource type="Texture2D" uid="uid://qg1cbh5376oa" path="res://Modules/UI/Assets/PlayUI/highScore.png" id="3_5tv4v"]
+[ext_resource type="Texture2D" uid="uid://cr7esk01eiidk" path="res://Modules/UI/Assets/PlayUI/Coins.png" id="5_v5ome"]
+[ext_resource type="Texture2D" uid="uid://bycsmomv758on" path="res://Modules/UI/Assets/PlayUI/Playing.png" id="6_v5ome"]
+[ext_resource type="Texture2D" uid="uid://bpo0ag3ngiyh2" path="res://Modules/UI/Assets/PlayUI/Fuel.png" id="7_3j4nf"]
+[ext_resource type="Texture2D" uid="uid://bd14atupo2p1f" path="res://Modules/UI/Assets/PlayUI/Rectangle 96.png" id="8_gw5bi"]
+[ext_resource type="Texture2D" uid="uid://b0jirjs0hta1t" path="res://Modules/UI/Assets/PlayUI/IndicatorIcons.png" id="8_qg725"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asov5"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.815686)
+border_width_bottom = 10
+border_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ba1qd"]
+font = ExtResource("2_dq65k")
+font_size = 176
+outline_size = 50
+outline_color = Color(0.277528, 0.277528, 0.277528, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_asov5"]
+font = ExtResource("2_dq65k")
+font_size = 131
+outline_size = 55
+outline_color = Color(0.226707, 0.226707, 0.226707, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dq65k"]
+font = ExtResource("2_asov5")
+font_size = 106
+outline_size = 20
+outline_color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5ome"]
+font = ExtResource("2_dq65k")
+font_size = 176
+outline_size = 50
+outline_color = Color(0.314986, 0.625549, 0.813023, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qg725"]
+font = ExtResource("2_dq65k")
+font_size = 206
+font_color = Color(0.843137, 0.72549, 0.541176, 1)
+outline_size = 50
+outline_color = Color(0.439216, 0.423529, 0.396078, 1)
+shadow_size = 56
+shadow_color = Color(0.265567, 0.25451, 0.235159, 1)
+shadow_offset = Vector2(0, 14.03)
+
+[node name="PlayUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ba1qd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 217.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_asov5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 93.0
+offset_right = 527.0
+offset_bottom = 270.0
+grow_horizontal = 2
+scale = Vector2(0.266539, 0.266539)
+text = "SCORE"
+label_settings = SubResource("LabelSettings_ba1qd")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 147.0
+offset_right = 411.0
+offset_bottom = 279.0
+grow_horizontal = 2
+scale = Vector2(0.320603, 0.320603)
+text = "0"
+label_settings = SubResource("LabelSettings_asov5")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 70.0
+offset_right = 236.0
+offset_bottom = 127.0
+texture = ExtResource("3_5tv4v")
+
+[node name="HighScore" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 7.0
+offset_right = 325.0
+offset_bottom = 124.0
+grow_horizontal = 2
+scale = Vector2(0.369663, 0.369663)
+text = "0"
+label_settings = SubResource("LabelSettings_dq65k")
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 137.0
+offset_right = 237.0
+offset_bottom = 194.0
+texture = ExtResource("5_v5ome")
+
+[node name="Coins" type="Label" parent="TextureRect2"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 12.0
+offset_right = 778.0
+offset_bottom = 189.0
+scale = Vector2(0.211143, 0.211143)
+text = "10"
+label_settings = SubResource("LabelSettings_v5ome")
+horizontal_alignment = 1
+
+[node name="playButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -131.0
+offset_right = 97.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.691836, 0.691836)
+texture_normal = ExtResource("6_v5ome")
+
+[node name="slingshotsuage" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -573.0
+offset_right = 173.0
+offset_bottom = 181.0
+grow_vertical = 0
+scale = Vector2(0.739196, 0.739196)
+mouse_filter = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("7_3j4nf")
+texture_progress = ExtResource("8_gw5bi")
+texture_progress_offset = Vector2(14, 14)
+
+[node name="TextureRect" type="TextureRect" parent="slingshotsuage"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -188.042
+offset_right = 120.0
+offset_bottom = -67.0421
+mouse_filter = 2
+texture = ExtResource("8_qg725")
+
+[node name="Label" type="Label" parent="slingshotsuage"]
+layout_mode = 0
+offset_left = 21.6451
+offset_top = -60.8769
+offset_right = 446.645
+offset_bottom = 146.123
+scale = Vector2(0.261404, 0.261404)
+text = "67%"
+label_settings = SubResource("LabelSettings_qg725")
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="playButton" to="." method="_onSlingShotDisableMouseEntered"]
+[connection signal="mouse_exited" from="playButton" to="." method="_onSlingShotDisableMouseExited"]
+[connection signal="pressed" from="playButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="slingshotsuage" to="." method="_onSlingShotDisableMouseEntered"]
+[connection signal="mouse_exited" from="slingshotsuage" to="." method="_onSlingShotDisableMouseExited"]

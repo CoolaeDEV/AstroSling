@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://e5njbu5ok5ai"]
+
+[ext_resource type="Script" uid="uid://qcis4x5bgna3" path="res://Modules/Player/Scripts/Player.gd" id="1_xav6x"]
+[ext_resource type="PackedScene" uid="uid://c5tr2wccvkyhw" path="res://Modules/Player/Assets/TrajectoryVisualizer/TrajectoryVisualizer.tscn" id="2_abdl7"]
+[ext_resource type="PackedScene" uid="uid://d4aslfh8n7p88" path="res://Modules/Player/Assets/Slingshot/SlingShot.tscn" id="3_a3n3f"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_abdl7"]
+points = PackedVector2Array(0, -10, 10, 10, -10, 10)
+
+[sub_resource type="PrismMesh" id="PrismMesh_a3n3f"]
+size = Vector3(20, 20, 1)
+
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("trajectoryVisualizer")]
+gravity_scale = 0.0
+script = ExtResource("1_xav6x")
+trajectoryVisualizer = NodePath("TrajectoryVisualizer")
+initalVelocity = null
+coinMultiplier = null
+slingShotDepletionMultiplier = null
+slingShotPowerMultipler = null
+doDrawTrajectory = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_abdl7")
+
+[node name="TrajectoryVisualizer" parent="." instance=ExtResource("2_abdl7")]
+
+[node name="SlingShot" parent="." instance=ExtResource("3_a3n3f")]
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+rotation = -3.14159
+mesh = SubResource("PrismMesh_a3n3f")

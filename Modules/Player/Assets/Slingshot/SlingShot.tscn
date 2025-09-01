@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4aslfh8n7p88"]
+
+[ext_resource type="Script" uid="uid://dobk0ppdfv011" path="res://Modules/Player/Assets/Slingshot/slingshot.gd" id="1_egwk2"]
+
+[sub_resource type="Curve" id="Curve_egwk2"]
+_data = [Vector2(0, 0.774867), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nx1qj"]
+colors = PackedColorArray(0.262745, 0.458824, 1, 0, 0.380517, 0.781837, 1, 1)
+
+[sub_resource type="Curve" id="Curve_37yh1"]
+_data = [Vector2(0, 0.826821), 0.0, 0.0, 0, 0, Vector2(1, 0.994227), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_egwk2"]
+colors = PackedColorArray(0.804148, 0.781017, 1.15514e-06, 1, 0.486292, 0.21276, 0, 0)
+
+[node name="Slingshot" type="Line2D"]
+width = 50.0
+width_curve = SubResource("Curve_egwk2")
+gradient = SubResource("Gradient_nx1qj")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+script = ExtResource("1_egwk2")
+
+[node name="NewTrajectory" type="Line2D" parent="."]
+width_curve = SubResource("Curve_37yh1")
+gradient = SubResource("Gradient_egwk2")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true

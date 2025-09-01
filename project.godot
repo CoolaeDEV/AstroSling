@@ -51,7 +51,9 @@ folder_colors={
 "res://Icons/": "blue",
 "res://Modules/": "yellow",
 "res://Scenes/": "orange",
-"res://Scripts/": "purple"
+"res://Scripts/": "purple",
+"res://android/": "green",
+"res://★Developers/": "teal"
 }
 
 [input]

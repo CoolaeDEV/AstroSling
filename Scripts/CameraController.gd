@@ -21,4 +21,4 @@ func _physics_process(_delta: float) -> void:
 	if doFollow:
 		position = lerp(position, target.position + cameraOffset, lerpSpeed)
 	if player.crashed:
-		player.camera.zoom = lerp(player.camera.zoom, Vector2(1.4, 1.4), 0.05)
+		player.camera.zoom = lerp(player.camera.zoom, Vector2(1.7, 1.7), 0.05)

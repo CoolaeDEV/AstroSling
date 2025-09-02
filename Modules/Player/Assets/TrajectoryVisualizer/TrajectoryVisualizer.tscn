@@ -1,17 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5tr2wccvkyhw"]
 
 [ext_resource type="Script" uid="uid://b3jchhv0tntu8" path="res://Modules/Player/Assets/TrajectoryVisualizer/TrajectoryViz.gd" id="1_37yh1"]
-
-[sub_resource type="Curve" id="Curve_37yh1"]
-_data = [Vector2(0, 0.826821), 0.0, 0.0, 0, 0, Vector2(1, 0.994227), 0.0, 0.0, 0, 0]
-point_count = 2
+[ext_resource type="Texture2D" uid="uid://dfs67q66hpdnq" path="res://Modules/UI/Assets/PlayUI/Line 7.png" id="1_pm0vq"]
 
 [sub_resource type="Gradient" id="Gradient_pm0vq"]
 colors = PackedColorArray(1, 0.0934372, 0.233179, 1, 0.552045, 0.120622, 0, 0)
 
 [node name="TrajectoryVisualizer" type="Line2D"]
-width = 3.0
-width_curve = SubResource("Curve_37yh1")
+width = 8.47
 gradient = SubResource("Gradient_pm0vq")
+texture = ExtResource("1_pm0vq")
+texture_mode = 1
 antialiased = true
 script = ExtResource("1_37yh1")

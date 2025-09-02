@@ -17,15 +17,21 @@ border_color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ba1qd"]
 font = ExtResource("2_dq65k")
-font_size = 176
-outline_size = 50
+font_size = 216
+outline_size = 35
 outline_color = Color(0.277528, 0.277528, 0.277528, 1)
+shadow_size = 51
+shadow_color = Color(0.20871, 0.20871, 0.20871, 1)
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_asov5"]
 font = ExtResource("2_dq65k")
-font_size = 131
-outline_size = 55
+font_size = 216
+outline_size = 40
 outline_color = Color(0.226707, 0.226707, 0.226707, 1)
+shadow_size = 51
+shadow_color = Color(0.172833, 0.172833, 0.172833, 1)
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dq65k"]
 font = ExtResource("2_asov5")
@@ -62,7 +68,7 @@ script = ExtResource("1_ba1qd")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 217.0
+offset_bottom = 178.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_asov5")
@@ -72,10 +78,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -75.0
-offset_top = 93.0
-offset_right = 527.0
-offset_bottom = 270.0
+offset_left = 12.0
+offset_top = 31.0
+offset_right = 751.0
+offset_bottom = 248.0
 grow_horizontal = 2
 scale = Vector2(0.266539, 0.266539)
 text = "SCORE"
@@ -87,10 +93,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -70.0
-offset_top = 147.0
-offset_right = 411.0
-offset_bottom = 279.0
+offset_left = -6.0
+offset_top = 96.0
+offset_right = 715.0
+offset_bottom = 324.0
 grow_horizontal = 2
 scale = Vector2(0.320603, 0.320603)
 text = "0"
@@ -99,10 +105,11 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 70.0
-offset_right = 236.0
-offset_bottom = 127.0
+offset_left = 17.0
+offset_top = 27.0
+offset_right = 241.0
+offset_bottom = 84.0
+scale = Vector2(1.02695, 1.02695)
 texture = ExtResource("3_5tv4v")
 
 [node name="HighScore" type="Label" parent="TextureRect"]
@@ -122,10 +129,11 @@ horizontal_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 137.0
-offset_right = 237.0
-offset_bottom = 194.0
+offset_left = 18.0
+offset_top = 96.0
+offset_right = 242.0
+offset_bottom = 153.0
+scale = Vector2(1.02288, 1.02288)
 texture = ExtResource("5_v5ome")
 
 [node name="Coins" type="Label" parent="TextureRect2"]
@@ -146,13 +154,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -131.0
-offset_right = 97.0
-offset_bottom = 31.0
+offset_left = -371.0
+offset_top = -165.0
+offset_right = 6.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.691836, 0.691836)
+scale = Vector2(0.93592, 0.93592)
+mouse_filter = 1
 texture_normal = ExtResource("6_v5ome")
 
 [node name="slingshotsuage" type="TextureProgressBar" parent="."]
@@ -160,12 +169,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = -573.0
-offset_right = 173.0
-offset_bottom = 181.0
+offset_left = 16.0
+offset_top = -477.0
+offset_right = 166.0
+offset_bottom = 277.0
 grow_vertical = 0
-scale = Vector2(0.739196, 0.739196)
+scale = Vector2(0.618644, 0.618644)
 mouse_filter = 2
 value = 100.0
 fill_mode = 3

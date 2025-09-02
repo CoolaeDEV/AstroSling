@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4aslfh8n7p88"]
 
 [ext_resource type="Script" uid="uid://dobk0ppdfv011" path="res://Modules/Player/Assets/Slingshot/slingshot.gd" id="1_egwk2"]
+[ext_resource type="Texture2D" uid="uid://bquxglikr76gd" path="res://Modules/UI/Assets/PlayUI/Line 6(3).png" id="2_nx1qj"]
 
 [sub_resource type="Curve" id="Curve_egwk2"]
 _data = [Vector2(0, 0.774867), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -9,12 +10,8 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_nx1qj"]
 colors = PackedColorArray(0.262745, 0.458824, 1, 0, 0.380517, 0.781837, 1, 1)
 
-[sub_resource type="Curve" id="Curve_37yh1"]
-_data = [Vector2(0, 0.826821), 0.0, 0.0, 0, 0, Vector2(1, 0.994227), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_egwk2"]
-colors = PackedColorArray(0.804148, 0.781017, 1.15514e-06, 1, 0.486292, 0.21276, 0, 0)
+[sub_resource type="Gradient" id="Gradient_1obst"]
+colors = PackedColorArray(1, 1, 1, 1, 0.212305, 0.212305, 0.212305, 1)
 
 [node name="Slingshot" type="Line2D"]
 width = 50.0
@@ -27,8 +24,11 @@ round_precision = 16
 script = ExtResource("1_egwk2")
 
 [node name="NewTrajectory" type="Line2D" parent="."]
-width_curve = SubResource("Curve_37yh1")
-gradient = SubResource("Gradient_egwk2")
+scale = Vector2(1, 0.997701)
+width = 8.81
+gradient = SubResource("Gradient_1obst")
+texture = ExtResource("2_nx1qj")
+texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2

@@ -29,8 +29,8 @@ func _ready():
 
 func _on_restart_button_pressed() -> void:
 	if player:
-		player.reset()
 		reset_anim.play("close")
+		player.reset()
 		await(get_tree().create_timer(1).timeout)
 		hide()
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bolyws6tar17r"]
+
+[ext_resource type="Script" uid="uid://wxhewytvrvqo" path="res://Modules/CelestialBody/Assets/PlanetGeneration/Chunk.gd" id="1_qlovk"]
+
+[node name="Chunk" type="Node2D"]
+script = ExtResource("1_qlovk")

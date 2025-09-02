@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(143, 1209)]
+"values": [Vector2(144, 1323)]
 }
 
 [sub_resource type="Animation" id="Animation_go303"]
@@ -110,9 +110,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.0883883, 0.0883883),
+"transitions": PackedFloat32Array(0.133972, 0.133972),
 "update": 0,
-"values": [Vector2(143, 405), Vector2(143, 1209)]
+"values": [Vector2(144, 438), Vector2(144, 1319)]
 }
 
 [sub_resource type="Animation" id="Animation_t8svf"]
@@ -125,10 +125,10 @@ tracks/0/path = NodePath("Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667),
-"transitions": PackedFloat32Array(0.0883883, 0.0883883),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.133972, 0.133972),
 "update": 0,
-"values": [Vector2(143, 1209), Vector2(143, 405)]
+"values": [Vector2(144, 1319), Vector2(144, 438)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_go303"]
@@ -154,12 +154,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = 633.0
-offset_right = 171.0
-offset_bottom = 927.0
+offset_left = -180.0
+offset_top = 743.0
+offset_right = 172.0
+offset_bottom = 1037.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5097, 1.5097)
+pivot_offset = Vector2(179.443, 154.287)
 theme_override_styles/panel = SubResource("StyleBoxFlat_jwxwk")
 
 [node name="Label" type="Label" parent="Panel"]

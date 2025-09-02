@@ -1,28 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://fotoh4n78dg0"]
+[gd_scene load_steps=7 format=3 uid="uid://fotoh4n78dg0"]
 
 [ext_resource type="Script" uid="uid://djp3seot464s1" path="res://Modules/UI/Scripts/MainMenuUI.gd" id="1_16xw8"]
-[ext_resource type="Texture2D" uid="uid://dxim3j5cgpvge" path="res://Modules/UI/Assets/MainMenu/Logo.png" id="1_u2tdc"]
-[ext_resource type="Texture2D" uid="uid://6vamsmnnv11f" path="res://Modules/UI/Assets/MainMenu/Classic.png" id="2_16xw8"]
+[ext_resource type="Texture2D" uid="uid://bmnduf6op1l0h" path="res://Modules/UI/Assets/MainMenu/Group 27(2).png" id="2_p0uo4"]
+[ext_resource type="FontFile" uid="uid://b5i7lk7lal56p" path="res://Modules/UI/Assets/fonnts.com-BraahOne-Regular.ttf" id="3_p0uo4"]
+[ext_resource type="Texture2D" uid="uid://cm14i1lturtv3" path="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png" id="4_p0uo4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7x0jy"]
+line_spacing = -138.78
+paragraph_spacing = -161.305
+font = ExtResource("3_p0uo4")
+font_size = 551
+outline_size = 100
+outline_color = Color(0.306923, 0.306923, 0.306923, 1)
+shadow_size = 151
+shadow_color = Color(0.147672, 0.147672, 0.147672, 1)
+shadow_offset = Vector2(0, 8.44)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p0uo4"]
+line_spacing = -138.78
+paragraph_spacing = -161.305
+font = ExtResource("3_p0uo4")
+font_size = 551
+font_color = Color(0.753984, 0.753984, 0.753984, 1)
+outline_size = 100
+outline_color = Color(0.314316, 0.314316, 0.314316, 1)
+shadow_size = 171
+shadow_color = Color(0.147672, 0.147672, 0.147672, 1)
+shadow_offset = Vector2(0, 22.85)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_16xw8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = 148.0
-offset_top = 67.0
-offset_right = 491.0
-offset_bottom = 331.0
-scale = Vector2(0.999863, 0.999863)
-texture = ExtResource("1_u2tdc")
-
 [node name="ClassicButton" type="TextureButton" parent="CanvasLayer"]
-offset_left = 198.0
-offset_top = 424.0
-offset_right = 575.0
-offset_bottom = 586.0
-scale = Vector2(0.699082, 0.699082)
-texture_normal = ExtResource("2_16xw8")
+offset_left = -5.0
+offset_top = 457.0
+offset_right = 629.0
+offset_bottom = 720.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(326, 132)
+texture_normal = ExtResource("2_p0uo4")
+ignore_texture_size = true
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 48.0
+offset_top = 27.0
+offset_right = 1515.0
+offset_bottom = 1272.0
+scale = Vector2(0.365776, 0.365776)
+text = "Astro
+Sling"
+label_settings = SubResource("LabelSettings_7x0jy")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 404.0
+offset_top = 453.0
+offset_right = 3034.0
+offset_bottom = 1698.0
+scale = Vector2(0.0505774, 0.0505774)
+text = "v1.0-alpha"
+label_settings = SubResource("LabelSettings_p0uo4")
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(376, 597)
+rotation = 1.5744
+texture = ExtResource("4_p0uo4")
+
+[connection signal="mouse_entered" from="CanvasLayer/ClassicButton" to="." method="_on_classic_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ClassicButton" to="." method="_on_classic_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/ClassicButton" to="." method="_on_classic_button_pressed"]

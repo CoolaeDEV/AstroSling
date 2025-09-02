@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 	if player:
 		if player.doDrawTrajectory:
 			if player.NBodySim:
-				var worldPoints = predict_trajectory(player, player.NBodySim.allBodies)
+				var worldPoints = predict_trajectory(player, player.NBodySim.allBodies, 50)
 				var localPoints : PackedVector2Array = []
 				for p in worldPoints:
 					localPoints.append(to_local(p))
@@ -23,37 +23,40 @@ func _process(_delta: float) -> void:
 		elif player.doDrawTrajectory == false:
 			points.clear()
 
-func predict_trajectory(body, planets:Array, steps:int = 100, dt:float = 0.05) -> PackedVector2Array:
-	var points:PackedVector2Array = []
+func predict_trajectory(body, planets:Array, steps:int = 50, dt:float = 0.05) -> PackedVector2Array:
+	var points := PackedVector2Array()
+	points.resize(steps + 1)
 
-	var pos:Vector2 = body.position
-	var vel:Vector2 = body.currentVelocity
-	points.append(pos)
+	var pos: Vector2 = body.position
+	var vel: Vector2 = body.currentVelocity
+	points[0] = pos
 
-	for s in range(steps):
+	var gm = Universe.gravitationalConstant * body.mass
+
+	for s in range(1, steps + 1):
 		var total_force := Vector2.ZERO
+
 		for p in planets:
 			if p == body:
 				continue
-			var r = p.position - pos
-			var sqrDst = r.length_squared()
-			if sqrDst == 0:
+			var r: Vector2 = p.position - pos
+			var sqrDst := r.x * r.x + r.y * r.y
+			if sqrDst == 0.0:
 				continue
-			var forceDir = r.normalized()
-			var force = forceDir * Universe.gravitationalConstant * body.mass * p.Mass / sqrDst
+			var inv_len := 1.0 / sqrt(sqrDst)
+			var force = r * (gm * p.Mass * inv_len / sqrDst)
 			total_force += force
 
-		# integrate
 		var acc = total_force / body.mass
 		vel += acc * dt
 		pos += vel * dt
-
-		points.append(pos)
+		points[s] = pos
 
 		# impact check
 		for p in planets:
-			var radius = p.Radius   # assume you store planet radius
-			if pos.distance_to(p.position) <= radius:
-				return points  # stop at impact point
+			var r2 = (pos - p.position).length_squared()
+			if r2 <= p.Radius * p.Radius:
+				points.resize(s + 1)
+				return points
 
 	return points

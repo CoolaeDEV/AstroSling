@@ -7,6 +7,7 @@ class_name Player
 @export var resetUI : Control
 @export var PlayUI : PlayUI
 @export var trajectoryVisualizer : TrajectorVisualizer
+@export var nearMisser : NearMisser
 var NBodySim : NBodySimulation
 
 # -Velocity Vars-

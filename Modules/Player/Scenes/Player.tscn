@@ -14,11 +14,6 @@ size = Vector3(20, 20, 1)
 gravity_scale = 0.0
 script = ExtResource("1_xav6x")
 trajectoryVisualizer = NodePath("TrajectoryVisualizer")
-initalVelocity = null
-coinMultiplier = null
-slingShotDepletionMultiplier = null
-slingShotPowerMultipler = null
-doDrawTrajectory = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_abdl7")

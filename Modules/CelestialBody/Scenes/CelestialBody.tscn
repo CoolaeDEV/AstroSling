@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl27iptfprrq3"]
+[gd_scene load_steps=8 format=3 uid="uid://bl27iptfprrq3"]
 
 [ext_resource type="Script" uid="uid://s6ld2r4b16gy" path="res://Modules/CelestialBody/Scripts/CelestialBody.gd" id="1_w53tr"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_w53tr"]
-radius = 17.0
-height = 34.0
+[ext_resource type="Texture2D" uid="uid://balhi1viu14k" path="res://Modules/UI/Assets/PlayUI/Earthlike.png" id="2_1oqai"]
+[ext_resource type="Texture2D" uid="uid://iumgaei1bmwj" path="res://Modules/UI/Assets/PlayUI/EarthAtmosphere.svg" id="2_kd1ho"]
+[ext_resource type="Texture2D" uid="uid://yogwnfta6irx" path="res://Modules/UI/Assets/PlayUI/MarsLike.png" id="4_jedq1"]
+[ext_resource type="Texture2D" uid="uid://dg3qollhwh613" path="res://Modules/UI/Assets/PlayUI/MarsLikeAtmosphere.png" id="4_wxotg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w53tr"]
 radius = 17.0
@@ -14,9 +14,22 @@ radius = 17.0
 
 [node name="CelestialBody" type="StaticBody2D"]
 script = ExtResource("1_w53tr")
+bodyTexture = ExtResource("2_1oqai")
 
-[node name="Mesh" type="MeshInstance2D" parent="."]
-mesh = SubResource("SphereMesh_w53tr")
+[node name="EarthAtmosphere" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.0313704, 0.0313704)
+texture = ExtResource("2_kd1ho")
+
+[node name="MarsAtmosphere" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.0313704, 0.0313704)
+texture = ExtResource("4_wxotg")
+
+[node name="Mesh" type="Sprite2D" parent="."]
+scale = Vector2(0.031826, 0.031826)
+texture = ExtResource("4_jedq1")
 
 [node name="surfaceCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w53tr")

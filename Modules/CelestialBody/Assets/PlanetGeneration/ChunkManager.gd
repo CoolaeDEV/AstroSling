@@ -1,69 +1,69 @@
 extends Node2D
-# Keeps chunks around the player and generates them
-
-@export_node_path("Node2D")
-var player_path: NodePath
-var player: Node2D
 
 @export var celestialScene : PackedScene
+@export var spawnArea: Rect2 = Rect2(Vector2(0,0), Vector2(800, 600))
+@export var spawnInterval : float = 0.5
+@export var minRadius : float = 10.0
+@export var maxRadius : float = 50.0
+@export var maxPlanets : int = 10
+@export var minSpacing : float = 20.0
+@export var maxAttempts : int = 20
 
-const CHUNK_SIZE := 1024                    # world units per chunk
-const PIXEL_RES := 256                      # texture size per chunk (square)
-const ACTIVE_RADIUS := 2                    # chunks radius around player (Manhattan/radial)
-const SITES_MIN := 4
-const SITES_MAX := 10
+@export var player : Player
 
-var seed : int = 123456789
-var activeChunks := {}
+var timer : float = 0.0
+var planetsSpawned : int = 0
+var planets: Array[CelestialBody] = []
 
-func _ready():
-	player = get_node(player_path)
-	updateActiveChunks(true)
+func _ready() -> void:
+	spawnArea.position = global_position
 
 func _process(_delta: float) -> void:
-	updateActiveChunks()
-	
-func updateActiveChunks(force=false):
-	if not player:
+	timer += _delta
+	if timer >= spawnInterval and not planetsSpawned >= maxPlanets:
+		timer = 0.0
+		spawnPlanet()
+
+		if player:
+			player.NBodySim.updateAllBodies()
+
+func spawnPlanet() -> void:
+	if celestialScene == null:
 		return
 	
-	var pc := worldToChunk(player.global_position)
-	var needed := {}
-	for x in range(pc.x - ACTIVE_RADIUS, pc.x + ACTIVE_RADIUS + 1):
-		for y in range(pc.y - ACTIVE_RADIUS, pc.y + ACTIVE_RADIUS + 1):
-			var key = Vector2i(x,y)
-			needed[key] = true
-			if not activeChunks.has(key) or force:
-				createChunk(key)
-	# remove distant chunks
-	for key in activeChunks.keys():
-		if not needed.has(key):
-			removeChunk(key)
+	for attempt in range(maxAttempts):
+		var radius  = randf_range(minRadius, maxRadius)
+		var pos = Vector2(
+			randf_range(spawnArea.position.x + radius, spawnArea.position.x + spawnArea.size.x - radius),
+			randf_range(spawnArea.position.y + radius, spawnArea.position.y + spawnArea.size.y - radius)
+		)
+	
+		if not overlapsExisting(pos, radius):
+			var planet = celestialScene.instantiate()
+			if player:
+				var selfIndex = player.NBodySim.get_index()
+				player.NBodySim.add_child(planet)
+				player.NBodySim.move_child(planet, selfIndex+1)
+				
+	
+			planet.position = pos
+		
+			if planet is CelestialBody:
+				planet.bodyType = randi_range(0, planet.Bodytypes.size() - 1)
+				planet.initPlanetTextures()
+				
+				planet.Mass = randf_range(100, 1000)
 
-func worldToChunk(world_pos: Vector2) -> Vector2i:
-	return Vector2i(floor(world_pos.x / CHUNK_SIZE), floor(world_pos.y / CHUNK_SIZE))
+			var scaleFactor = randf_range(minRadius, maxRadius) / 32.0
+			planet.scale = Vector2(scaleFactor, scaleFactor)
+			planet.Radius = scaleFactor
+			planetsSpawned += 1
+			planets.append({"pos": pos, "radius": radius})
 
-func chunkOrigin(chunk_coords: Vector2i) -> Vector2:
-	return Vector2(chunk_coords.x * CHUNK_SIZE, chunk_coords.y * CHUNK_SIZE)
-
-func createChunk(chunk_coords: Vector2i) -> void:
-	if activeChunks.has(chunk_coords):
-		return
-	var chunk := Node2D.new()
-	chunk.name = "Chunk_%s_%s" % [chunk_coords.x, chunk_coords.y]
-	add_child(chunk)
-	chunk.position = chunkOrigin(chunk_coords)
-	# attach script to populate visuals and bodies
-	var chunk_script = preload("res://Modules/CelestialBody/Assets/PlanetGeneration/Chunk.tscn")
-	var inst = chunk_script.instantiate()
-	inst.setup(chunk_coords, CHUNK_SIZE, PIXEL_RES, seed, SITES_MIN, SITES_MAX, celestialScene)
-	chunk.add_child(inst)
-	activeChunks[chunk_coords] = { "node": chunk, "script": inst }
-
-func removeChunk(chunk_coords: Vector2i) -> void:
-	var info = activeChunks.get(chunk_coords, null)
-	if not info:
-		return
-	if info.node:
-		info.node.queue_free()
-	activeChunks.erase(chunk_coords)
+func overlapsExisting(pos: Vector2, radius: float) -> bool:
+	for data in planets:
+		var other_pos: Vector2 = data["pos"]
+		var other_radius: float = data["radius"]
+		if pos.distance_to(other_pos) < radius + other_radius + minSpacing:
+			return true
+	return false

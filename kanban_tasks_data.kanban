@@ -10,7 +10,11 @@
 		{
 			"uuid": "d54c24b0-5243-4a32-824b-04c500e6c16d",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"e2e7d884-508a-40b3-b86d-c0c44574e06c",
+				"bff02bb2-07c3-4b47-98a7-2a7432885d0b",
+				"1a0cae4a-3c79-4c9d-9169-2beca76c6466"
+			]
 		},
 		{
 			"uuid": "4e0e67ac-1523-42e1-b772-d027691004fb",
@@ -23,7 +27,29 @@
 			"tasks": []
 		}
 	],
-	"tasks": [],
+	"tasks": [
+		{
+			"uuid": "e2e7d884-508a-40b3-b86d-c0c44574e06c",
+			"title": "Fix the bug where you dont respawn back to the inital position",
+			"description": "",
+			"category": "3875fe94-0d7f-45dd-9933-a7e3bd971bca",
+			"steps": []
+		},
+		{
+			"uuid": "bff02bb2-07c3-4b47-98a7-2a7432885d0b",
+			"title": "add upgrades",
+			"description": "",
+			"category": "3875fe94-0d7f-45dd-9933-a7e3bd971bca",
+			"steps": []
+		},
+		{
+			"uuid": "1a0cae4a-3c79-4c9d-9169-2beca76c6466",
+			"title": "polish",
+			"description": "",
+			"category": "3875fe94-0d7f-45dd-9933-a7e3bd971bca",
+			"steps": []
+		}
+	],
 	"layout": {
 		"columns": [
 			[

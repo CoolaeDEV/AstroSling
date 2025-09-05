@@ -40,4 +40,5 @@ func _onSlingShotDisableMouseExited() -> void:
 func _on_play_button_pressed() -> void:
 	if player:
 		if not player.NBodySim.running:
+			player.position = player.initalPosition
 			player.NBodySim.running = true

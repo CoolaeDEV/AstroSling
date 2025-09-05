@@ -58,9 +58,9 @@ func _process(_delta: float) -> void:
 						var positionOnSphere
 						if closestPlanet is CelestialBody:
 							if not closestPlanet.isMoon:
-								positionOnSphere = closestPlanet.global_position + dirToPlayer * (closestPlanet.Radius + 80)
+								positionOnSphere = closestPlanet.global_position + dirToPlayer * (closestPlanet.scale * 20)
 							else:
-								positionOnSphere = closestPlanet.global_position + dirToPlayer * (closestPlanet.Radius + 30)
+								positionOnSphere = closestPlanet.global_position + dirToPlayer * (closestPlanet.scale * 20)
 						planetArrow.global_position = positionOnSphere
 						
 						var planetDir = (playerArrow.position - planetArrow.position).normalized()

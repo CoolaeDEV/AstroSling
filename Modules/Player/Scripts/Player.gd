@@ -50,6 +50,7 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
+	print(position)
 	if NBodySim.running:
 		if crashed:
 			if resetUI:
@@ -66,10 +67,10 @@ func _process(_delta: float) -> void:
 		if altitude >= maxAltitude:
 			maxAltitude = altitude
 
-	altitude = (initalAltitude - position.y) / 5
+		altitude = (initalAltitude - position.y) / 5
 
-	if slingShotUsage <= 0:
-		canSlingShot = false
+		if slingShotUsage <= 0:
+			canSlingShot = false
 
 func _physics_process(_delta: float) -> void:
 	if NBodySim.running and not crashed:
@@ -90,6 +91,7 @@ func updatePosition(timeStep):
 func reset():
 	NBodySim.running = false
 	position = initalPosition
+
 	rotation = 0
 	trajectoryVisualizer.clear_points()
 

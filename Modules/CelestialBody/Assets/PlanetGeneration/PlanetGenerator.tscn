@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://7dowlvtmpjf0"]
+[gd_scene load_steps=3 format=3 uid="uid://7dowlvtmpjf0"]
 
 [ext_resource type="Script" uid="uid://cjmeeisqaj71s" path="res://Modules/CelestialBody/Assets/PlanetGeneration/ChunkManager.gd" id="1_aapes"]
+[ext_resource type="PackedScene" uid="uid://bl27iptfprrq3" path="res://Modules/CelestialBody/Scenes/CelestialBody.tscn" id="2_ncb7v"]
 
 [node name="PlanetGenerator" type="Node2D"]
-
-[node name="ChunkManager" type="Node2D" parent="."]
 script = ExtResource("1_aapes")
+celestialScene = ExtResource("2_ncb7v")
+minRadius = 30.0
+minSpacing = 1.0

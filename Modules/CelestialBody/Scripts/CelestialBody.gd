@@ -17,7 +17,11 @@ enum Bodytypes{
 @export var bodyType : Bodytypes = Bodytypes.Earthlike
 @onready var earth_atmosphere: Sprite2D = $EarthAtmosphere
 @onready var mars_atmosphere: Sprite2D = $MarsAtmosphere
-@export var isMoon: bool = false
+
+@export var isMoon : bool = false
+const EARTHLIKE : Texture2D = preload("res://Modules/UI/Assets/PlayUI/Earthlike.png")
+const MARS_LIKE : Texture2D = preload("res://Modules/UI/Assets/PlayUI/MarsLike.png")
+const MOON_LIKE : Texture2D = preload("res://Modules/UI/Assets/PlayUI/MoonLike.png")
 
 @onready var kill_box: Area2D = $KillBox
 @onready var collision_shape_2d: CircleShape2D = $KillBox/CollisionShape2D.shape
@@ -35,25 +39,35 @@ func setupFromSeed(s: int) -> void:
 	createVisual()
 
 func _ready():
-	Radius = transform.get_scale().x
-	
-	mesh.texture = bodyTexture
+	Radius = scale.x
+	initPlanetTextures()
+
+func initPlanetTextures() -> void:
 	match bodyType: #setup Atmospheres
 		0: # Earthlike
+			if mesh:
+				mesh.texture = EARTHLIKE
 			earth_atmosphere.show()
 			mars_atmosphere.hide()
 			collision_shape_2d.radius = 19
+			isMoon = false
 		1: # MoonLike
+			if mesh:
+				mesh.texture = MOON_LIKE
 			earth_atmosphere.hide()
 			mars_atmosphere.hide()
 			collision_shape_2d.radius = 17
+			isMoon = true
 		2: # MarsLike
+			if mesh:
+				mesh.texture = MARS_LIKE 
 			earth_atmosphere.hide()
 			mars_atmosphere.show()
 			collision_shape_2d.radius = 19
-	
+			isMoon = false
+
 func _process(_delta: float) -> void:
-	rotation = rotationSpeed
+	rotation_degrees += rotationSpeed
 
 func createVisual() -> void:
 	# If we have a texture, use Sprite2D. if not then draw a circle through CircleShape in a CanvasItem.

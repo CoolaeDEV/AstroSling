@@ -40,3 +40,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	physicsTimeStep = lerp(physicsTimeStep, currentTimewarp, 0.5)
+
+func updateAllBodies() -> void:
+	for i in get_children():
+		if i is CelestialBody:
+			allBodies.push_back(i)

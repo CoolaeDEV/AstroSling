@@ -31,7 +31,6 @@ func _on_restart_button_pressed() -> void:
 	if player:
 		reset_anim.play("close")
 		player.reset()
-		await(get_tree().create_timer(1).timeout)
 		hide()
 
 func _on_visibility_changed() -> void:

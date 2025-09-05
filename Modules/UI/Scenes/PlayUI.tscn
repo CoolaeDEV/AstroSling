@@ -202,8 +202,6 @@ text = "67%"
 label_settings = SubResource("LabelSettings_qg725")
 horizontal_alignment = 1
 
-[connection signal="mouse_entered" from="playButton" to="." method="_onSlingShotDisableMouseEntered"]
-[connection signal="mouse_exited" from="playButton" to="." method="_onSlingShotDisableMouseExited"]
 [connection signal="pressed" from="playButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="slingshotsuage" to="." method="_onSlingShotDisableMouseEntered"]
 [connection signal="mouse_exited" from="slingshotsuage" to="." method="_onSlingShotDisableMouseExited"]

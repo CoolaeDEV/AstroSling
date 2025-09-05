@@ -24,11 +24,11 @@ texture = ExtResource("2_kd1ho")
 
 [node name="MarsAtmosphere" type="Sprite2D" parent="."]
 position = Vector2(-9.53674e-07, 0)
-scale = Vector2(0.0313704, 0.0313704)
+scale = Vector2(0.0323095, 0.0323095)
 texture = ExtResource("4_wxotg")
 
 [node name="Mesh" type="Sprite2D" parent="."]
-scale = Vector2(0.031826, 0.031826)
+scale = Vector2(0.0327788, 0.0327788)
 texture = ExtResource("4_jedq1")
 
 [node name="surfaceCollider" type="CollisionShape2D" parent="."]

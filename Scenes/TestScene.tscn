@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cofnh5nbfu1ge"]
+[gd_scene load_steps=11 format=3 uid="uid://cofnh5nbfu1ge"]
 
 [ext_resource type="Script" uid="uid://balsm43am56p" path="res://Scripts/Globals/NBodySimulation.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://e5njbu5ok5ai" path="res://Modules/Player/Scenes/Player.tscn" id="1_b5ayd"]
@@ -7,10 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cb2quddhy0rx1" path="res://Modules/Player/Assets/NearMissEncounter/NearMisser.tscn" id="4_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://y6tjv5shi7a5" path="res://Modules/UI/Scenes/PlayUI.tscn" id="5_c264a"]
 [ext_resource type="PackedScene" uid="uid://qea3w21va8h2" path="res://Modules/UI/Scenes/RestartUI.tscn" id="6_6xh1p"]
-[ext_resource type="PackedScene" uid="uid://bl27iptfprrq3" path="res://Modules/CelestialBody/Scenes/CelestialBody.tscn" id="6_qsjrb"]
 [ext_resource type="Texture2D" uid="uid://cm14i1lturtv3" path="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png" id="6_xjl2p"]
-[ext_resource type="Texture2D" uid="uid://djahsi0uhty3e" path="res://Modules/UI/Assets/PlayUI/MoonLike.png" id="8_5rbs6"]
-[ext_resource type="Texture2D" uid="uid://yogwnfta6irx" path="res://Modules/UI/Assets/PlayUI/MarsLike.png" id="8_201fe"]
+[ext_resource type="PackedScene" uid="uid://dd3ap8s763u25" path="res://Modules/Player/Assets/PlanetIndicator/PlanetIndicator.tscn" id="10_201fe"]
+[ext_resource type="PackedScene" uid="uid://7dowlvtmpjf0" path="res://Modules/CelestialBody/Assets/PlanetGeneration/PlanetGenerator.tscn" id="12_ytmxh"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_0f5h7")
@@ -18,42 +17,20 @@ script = ExtResource("1_0f5h7")
 [node name="Universe" type="Node" parent="."]
 script = ExtResource("2_5lt6y")
 
+[node name="PlanetGenerator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_ytmxh")]
+position = Vector2(-1385, -1779)
+spawnArea = Rect2(0, 0, 8000, 6000)
+minRadius = 100.0
+maxRadius = 300.0
+minSpacing = 1000.0
+player = NodePath("../Player")
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI", "nearMisser") instance=ExtResource("1_b5ayd")]
 camera = NodePath("../MainCamera")
 resetUI = NodePath("../MainCamera/CanvasLayer/RestartUi")
 PlayUI = NodePath("../MainCamera/CanvasLayer/PlayUi")
 nearMisser = NodePath("../NearMisser")
 initalVelocity = Vector2(0, -300)
-
-[node name="CelestialBody" parent="." instance=ExtResource("6_qsjrb")]
-position = Vector2(-218, -262)
-scale = Vector2(4.56878, 4.56878)
-Mass = 1500.0
-
-[node name="CelestialBody2" parent="." instance=ExtResource("6_qsjrb")]
-position = Vector2(312, -677)
-scale = Vector2(4.56878, 4.56878)
-Mass = 1500.0
-bodyTexture = ExtResource("8_201fe")
-bodyType = 2
-
-[node name="CelestialBody3" parent="." instance=ExtResource("6_qsjrb")]
-position = Vector2(-363, -1205)
-scale = Vector2(4.56878, 4.56878)
-Mass = 1500.0
-bodyTexture = ExtResource("8_5rbs6")
-bodyType = 1
-
-[node name="CelestialBody4" parent="." instance=ExtResource("6_qsjrb")]
-position = Vector2(-349, -438)
-scale = Vector2(1.38816, 1.38816)
-Mass = 500.0
-bodyTexture = ExtResource("8_5rbs6")
-bodyType = 1
-isMoon = true
-
-[node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
-player = NodePath("../Player")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("3_8k7wh")
@@ -63,10 +40,10 @@ script = ExtResource("3_8k7wh")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="MainCamera/CanvasLayer"]
 
 [node name="Background" type="Sprite2D" parent="MainCamera/CanvasLayer/ParallaxBackground"]
-position = Vector2(360, 927)
+position = Vector2(319, 569)
 rotation = 1.5708
+scale = Vector2(0.685057, 0.685057)
 texture = ExtResource("6_xjl2p")
-metadata/_edit_lock_ = true
 
 [node name="PlayUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_c264a")]
 player = NodePath("../../../Player")
@@ -74,3 +51,9 @@ player = NodePath("../../../Player")
 [node name="RestartUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_6xh1p")]
 visible = false
 player = NodePath("../../../Player")
+
+[node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
+player = NodePath("../Player")
+
+[node name="PlanetIndicator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_201fe")]
+player = NodePath("../Player")

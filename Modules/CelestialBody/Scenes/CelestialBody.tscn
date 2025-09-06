@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl27iptfprrq3"]
+[gd_scene load_steps=9 format=3 uid="uid://bl27iptfprrq3"]
 
 [ext_resource type="Script" uid="uid://s6ld2r4b16gy" path="res://Modules/CelestialBody/Scripts/CelestialBody.gd" id="1_w53tr"]
 [ext_resource type="Texture2D" uid="uid://balhi1viu14k" path="res://Modules/UI/Assets/PlayUI/Earthlike.png" id="2_1oqai"]
 [ext_resource type="Texture2D" uid="uid://iumgaei1bmwj" path="res://Modules/UI/Assets/PlayUI/EarthAtmosphere.svg" id="2_kd1ho"]
 [ext_resource type="Texture2D" uid="uid://yogwnfta6irx" path="res://Modules/UI/Assets/PlayUI/MarsLike.png" id="4_jedq1"]
 [ext_resource type="Texture2D" uid="uid://dg3qollhwh613" path="res://Modules/UI/Assets/PlayUI/MarsLikeAtmosphere.png" id="4_wxotg"]
+[ext_resource type="AudioStream" uid="uid://blqbonjphkhe6" path="res://Audio/Death.wav" id="6_v06ij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w53tr"]
 radius = 17.0
@@ -39,5 +40,8 @@ shape = SubResource("CircleShape2D_w53tr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
 shape = SubResource("CircleShape2D_1oqai")
 debug_color = Color(0.956106, 8.66354e-07, 0.539692, 0.42)
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v06ij")
 
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]

@@ -1,15 +1,60 @@
-[gd_scene load_steps=11 format=3 uid="uid://cofnh5nbfu1ge"]
+[gd_scene load_steps=25 format=3 uid="uid://cofnh5nbfu1ge"]
 
 [ext_resource type="Script" uid="uid://balsm43am56p" path="res://Scripts/Globals/NBodySimulation.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://e5njbu5ok5ai" path="res://Modules/Player/Scenes/Player.tscn" id="1_b5ayd"]
 [ext_resource type="Script" uid="uid://b5qhq5gqbchpu" path="res://Scripts/Globals/Universe.gd" id="2_5lt6y"]
 [ext_resource type="Script" uid="uid://cje2h0jrqq6w1" path="res://Scripts/CameraController.gd" id="3_8k7wh"]
 [ext_resource type="PackedScene" uid="uid://cb2quddhy0rx1" path="res://Modules/Player/Assets/NearMissEncounter/NearMisser.tscn" id="4_qsjrb"]
+[ext_resource type="Texture2D" uid="uid://yogwnfta6irx" path="res://Modules/UI/Assets/PlayUI/MarsLike.png" id="5_4v62a"]
 [ext_resource type="PackedScene" uid="uid://y6tjv5shi7a5" path="res://Modules/UI/Scenes/PlayUI.tscn" id="5_c264a"]
+[ext_resource type="Texture2D" uid="uid://djahsi0uhty3e" path="res://Modules/UI/Assets/PlayUI/MoonLike.png" id="5_fi7j4"]
 [ext_resource type="PackedScene" uid="uid://qea3w21va8h2" path="res://Modules/UI/Scenes/RestartUI.tscn" id="6_6xh1p"]
 [ext_resource type="Texture2D" uid="uid://cm14i1lturtv3" path="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png" id="6_xjl2p"]
+[ext_resource type="PackedScene" uid="uid://cjtkfc0h5kahe" path="res://Modules/UI/Scenes/UpgradeUI.tscn" id="8_8c81w"]
 [ext_resource type="PackedScene" uid="uid://dd3ap8s763u25" path="res://Modules/Player/Assets/PlanetIndicator/PlanetIndicator.tscn" id="10_201fe"]
-[ext_resource type="PackedScene" uid="uid://7dowlvtmpjf0" path="res://Modules/CelestialBody/Assets/PlanetGeneration/PlanetGenerator.tscn" id="12_ytmxh"]
+[ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="11_p30di"]
+[ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="12_8c81w"]
+[ext_resource type="Script" uid="uid://bxsk7uywkd145" path="res://addons/postfx/effects/ChromaticAberrationFX.gd" id="13_fi7j4"]
+[ext_resource type="Script" uid="uid://cqqc7s7kp8uem" path="res://addons/postfx/effects/VignetteFX.gd" id="14_4v62a"]
+[ext_resource type="Script" uid="uid://c7ohpi2e8bpp0" path="res://addons/postfx/effects/LensFlareFX.gd" id="15_c2lnq"]
+[ext_resource type="Script" uid="uid://bkhxqrg1vl7yd" path="res://addons/postfx/effects/ColorCorrectionFX.gd" id="16_p30di"]
+[ext_resource type="PackedScene" uid="uid://bl27iptfprrq3" path="res://Modules/CelestialBody/Scenes/CelestialBody.tscn" id="17_8c81w"]
+
+[sub_resource type="Environment" id="Environment_201fe"]
+glow_enabled = true
+glow_intensity = 2.72
+glow_strength = 1.6
+glow_bloom = 0.57
+
+[sub_resource type="Resource" id="Resource_1vcy8"]
+script = ExtResource("13_fi7j4")
+strength = 1.365
+enabled = true
+metadata/_custom_type_script = "uid://bxsk7uywkd145"
+
+[sub_resource type="Resource" id="Resource_65o0v"]
+script = ExtResource("14_4v62a")
+intensity = 0.375
+color = Color(0, 0, 0, 1)
+enabled = true
+metadata/_custom_type_script = "uid://cqqc7s7kp8uem"
+
+[sub_resource type="Resource" id="Resource_o5yho"]
+script = ExtResource("15_c2lnq")
+WARNING = "
+!!! WARNING !!!
+Experimental
+"
+enabled = true
+metadata/_custom_type_script = "uid://c7ohpi2e8bpp0"
+
+[sub_resource type="Resource" id="Resource_8c81w"]
+script = ExtResource("16_p30di")
+tint = Color(0.82196, 0.773247, 0.745534, 1)
+brightness = 0.0
+saturation = 0.0
+enabled = true
+metadata/_custom_type_script = "uid://bkhxqrg1vl7yd"
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_0f5h7")
@@ -17,20 +62,49 @@ script = ExtResource("1_0f5h7")
 [node name="Universe" type="Node" parent="."]
 script = ExtResource("2_5lt6y")
 
-[node name="PlanetGenerator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_ytmxh")]
-position = Vector2(-1385, -1779)
-spawnArea = Rect2(0, 0, 8000, 6000)
-minRadius = 100.0
-maxRadius = 300.0
-minSpacing = 1000.0
-player = NodePath("../Player")
-
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI", "nearMisser") instance=ExtResource("1_b5ayd")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI", "nearMisser", "planetIndic") instance=ExtResource("1_b5ayd")]
 camera = NodePath("../MainCamera")
 resetUI = NodePath("../MainCamera/CanvasLayer/RestartUi")
 PlayUI = NodePath("../MainCamera/CanvasLayer/PlayUi")
 nearMisser = NodePath("../NearMisser")
+planetIndic = NodePath("../PlanetIndicator")
 initalVelocity = Vector2(0, -300)
+
+[node name="CelestialBody" parent="." instance=ExtResource("17_8c81w")]
+position = Vector2(-364, 0)
+scale = Vector2(5.00721, 5.00721)
+Mass = 1000.0
+
+[node name="CelestialBody3" parent="." instance=ExtResource("17_8c81w")]
+position = Vector2(-5545, 0)
+scale = Vector2(11.4333, 11.4333)
+Mass = 2000.0
+bodyTexture = ExtResource("5_4v62a")
+bodyType = 2
+
+[node name="CelestialBody4" parent="." instance=ExtResource("17_8c81w")]
+position = Vector2(-4542, 0)
+scale = Vector2(3.11295, 3.11295)
+Mass = 500.0
+bodyTexture = ExtResource("5_fi7j4")
+bodyType = 1
+isMoon = true
+
+[node name="CelestialBody5" parent="." instance=ExtResource("17_8c81w")]
+position = Vector2(-5524, -1078)
+scale = Vector2(2.01102, 2.01102)
+Mass = 300.0
+bodyTexture = ExtResource("5_fi7j4")
+bodyType = 1
+isMoon = true
+
+[node name="CelestialBody2" parent="." instance=ExtResource("17_8c81w")]
+position = Vector2(-394, 1657)
+scale = Vector2(3.21861, 3.21861)
+Mass = 700.0
+bodyTexture = ExtResource("5_fi7j4")
+bodyType = 1
+isMoon = true
 
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("3_8k7wh")
@@ -45,11 +119,15 @@ rotation = 1.5708
 scale = Vector2(0.685057, 0.685057)
 texture = ExtResource("6_xjl2p")
 
-[node name="PlayUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_c264a")]
+[node name="PlayUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player", "upgradeUI") instance=ExtResource("5_c264a")]
 player = NodePath("../../../Player")
+upgradeUI = NodePath("../UpgradeUi")
 
 [node name="RestartUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_6xh1p")]
 visible = false
+player = NodePath("../../../Player")
+
+[node name="UpgradeUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_8c81w")]
 player = NodePath("../../../Player")
 
 [node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
@@ -57,3 +135,11 @@ player = NodePath("../Player")
 
 [node name="PlanetIndicator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_201fe")]
 player = NodePath("../Player")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_201fe")
+
+[node name="PostFX" type="CanvasLayer" parent="."]
+script = ExtResource("11_p30di")
+effects = Array[ExtResource("12_8c81w")]([SubResource("Resource_1vcy8"), SubResource("Resource_65o0v"), SubResource("Resource_o5yho"), SubResource("Resource_8c81w")])
+metadata/_custom_type_script = "uid://d15nobs3uuxeb"

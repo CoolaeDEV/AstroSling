@@ -20,8 +20,6 @@ config/icon="uid://86427xlipljh"
 [autoload]
 
 UIAnimation="*res://addons/godot_ui_animations/UIAnimationHandler.tscn"
-Audio="*res://addons/easy_audio/audio.gd"
-Music="*res://addons/easy_audio/music.gd"
 
 [display]
 
@@ -42,7 +40,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotAndroidHaptics/plugin.cfg", "res://addons/NotificationSchedulerPlugin/plugin.cfg", "res://addons/admob/plugin.cfg", "res://addons/easy_audio/plugin.cfg", "res://addons/godot_ui_animations/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/softbody2d/plugin.cfg", "res://addons/splash_screen_wizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotAndroidHaptics/plugin.cfg", "res://addons/NotificationSchedulerPlugin/plugin.cfg", "res://addons/admob/plugin.cfg", "res://addons/godot_ui_animations/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/postfx/plugin.cfg", "res://addons/softbody2d/plugin.cfg", "res://addons/splash_screen_wizard/plugin.cfg")
 
 [file_customization]
 

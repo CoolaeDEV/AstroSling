@@ -19,6 +19,7 @@ trajectoryVisualizer = NodePath("TrajectoryVisualizer")
 shape = SubResource("ConvexPolygonShape2D_abdl7")
 
 [node name="TrajectoryVisualizer" parent="." instance=ExtResource("2_abdl7")]
+texture = null
 
 [node name="SlingShot" parent="." instance=ExtResource("3_a3n3f")]
 

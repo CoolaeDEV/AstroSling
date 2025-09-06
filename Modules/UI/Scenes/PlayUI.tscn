@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://y6tjv5shi7a5"]
+[gd_scene load_steps=19 format=3 uid="uid://y6tjv5shi7a5"]
 
 [ext_resource type="Script" uid="uid://c7kvghby57635" path="res://Modules/UI/Scripts/PlayUIManager.gd" id="1_ba1qd"]
 [ext_resource type="FontFile" uid="uid://cxe0bbixqghmp" path="res://Modules/UI/Assets/Belanosima-Regular.ttf" id="2_asov5"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cr7esk01eiidk" path="res://Modules/UI/Assets/PlayUI/Coins.png" id="5_v5ome"]
 [ext_resource type="Texture2D" uid="uid://bycsmomv758on" path="res://Modules/UI/Assets/PlayUI/Playing.png" id="6_v5ome"]
 [ext_resource type="Texture2D" uid="uid://bpo0ag3ngiyh2" path="res://Modules/UI/Assets/PlayUI/Fuel.png" id="7_3j4nf"]
+[ext_resource type="Texture2D" uid="uid://d36s4m1l36kwn" path="res://Modules/UI/Assets/PlayUI/Quit.png" id="7_gw5bi"]
 [ext_resource type="Texture2D" uid="uid://bd14atupo2p1f" path="res://Modules/UI/Assets/PlayUI/Rectangle 96.png" id="8_gw5bi"]
+[ext_resource type="Texture2D" uid="uid://dwln16r44gk0u" path="res://Modules/UI/Assets/PlayUI/UpgradeButton.png" id="8_o23ev"]
 [ext_resource type="Texture2D" uid="uid://b0jirjs0hta1t" path="res://Modules/UI/Assets/PlayUI/IndicatorIcons.png" id="8_qg725"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asov5"]
@@ -44,6 +46,15 @@ font = ExtResource("2_dq65k")
 font_size = 176
 outline_size = 50
 outline_color = Color(0.314986, 0.625549, 0.813023, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o23ev"]
+font = ExtResource("2_dq65k")
+font_size = 406
+outline_size = 110
+outline_color = Color(0.415686, 0.427451, 0.627451, 1)
+shadow_size = 201
+shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qg725"]
 font = ExtResource("2_dq65k")
@@ -164,6 +175,55 @@ scale = Vector2(0.93592, 0.93592)
 mouse_filter = 1
 texture_normal = ExtResource("6_v5ome")
 
+[node name="quitButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -271.0
+offset_right = -14.0
+offset_bottom = -173.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.93592, 0.93592)
+mouse_filter = 1
+texture_normal = ExtResource("7_gw5bi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="UpgradeButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -270.0
+offset_right = -17.0
+offset_bottom = -172.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.93592, 0.93592)
+mouse_filter = 1
+texture_normal = ExtResource("8_o23ev")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UpgradeButton"]
+layout_mode = 0
+offset_left = -13.8901
+offset_top = -34.1909
+offset_right = 2113.11
+offset_bottom = 372.809
+scale = Vector2(0.0552548, 0.0552548)
+text = "Upgrades"
+label_settings = SubResource("LabelSettings_o23ev")
+
 [node name="slingshotsuage" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -203,5 +263,7 @@ label_settings = SubResource("LabelSettings_qg725")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="mouse_entered" from="slingshotsuage" to="." method="_onSlingShotDisableMouseEntered"]
 [connection signal="mouse_exited" from="slingshotsuage" to="." method="_onSlingShotDisableMouseExited"]

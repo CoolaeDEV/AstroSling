@@ -8,6 +8,7 @@ class_name Player
 @export var PlayUI : PlayUI
 @export var trajectoryVisualizer : TrajectorVisualizer
 @export var nearMisser : NearMisser
+@export var planetIndic : planetIndicator
 var NBodySim : NBodySimulation
 
 # -Velocity Vars-
@@ -21,6 +22,12 @@ var maxVelocity : float
 @export var coinMultiplier : int = 1.5
 @export var slingShotDepletionMultiplier : float = 100.0
 @export var slingShotPowerMultipler : float = 150.0
+
+var upgrades : Array = []
+		# "UpgradeImage": preload(image_path),
+		# "UpgradeName": name,
+		# "UpgradeType": type,
+		# "UpgradeCost" : how much money it costs
 
 # -Misc-
 @export_category("Misc")
@@ -50,7 +57,6 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	print(position)
 	if NBodySim.running:
 		if crashed:
 			if resetUI:
@@ -71,6 +77,17 @@ func _process(_delta: float) -> void:
 
 		if slingShotUsage <= 0:
 			canSlingShot = false
+	else:
+		camera.zoom = lerp(camera.zoom, Vector2(6,6), 0.5)
+		trajectoryVisualizer.hide()
+		planetIndic.hide()
+
+func checkUpgradesAndApply():
+	upgrades.all(func(i):
+		match i.get("UpgradeType"):
+			0: #SlingBoost:
+				pass
+		)
 
 func _physics_process(_delta: float) -> void:
 	if NBodySim.running and not crashed:
@@ -89,6 +106,7 @@ func updatePosition(timeStep):
 	position += currentVelocity * timeStep
 
 func reset():
+	canSlingShot = false
 	NBodySim.running = false
 	position = initalPosition
 
@@ -98,7 +116,6 @@ func reset():
 	crashed = false
 	currentVelocity = initalVelocity
 	coins += (score / 2.5) * coinMultiplier
-
 	NBodySim.currentTimewarp = NBodySim.Timewarps[0]
 
 	maxVelocity = 0

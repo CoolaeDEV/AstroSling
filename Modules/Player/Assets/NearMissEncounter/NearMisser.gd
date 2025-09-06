@@ -72,13 +72,15 @@ func _process(_delta: float) -> void:
 						cameraTarget.position = (player_distance_node.global_position + planet_distance_node.global_position) / 2
 						player.camera.target = cameraTarget
 						
-						if (closestPlanet.position - player.position).length() <= 100:
+						if (closestPlanet.position - player.position).length() <= 200:
 							player.score += 0.1
-						elif (closestPlanet.position - player.position).length() <= 150:
+
+						if (closestPlanet.position - player.position).length() <= 150:
 								player.score += 1
 								player.camera.zoom = lerp(player.camera.zoom, Vector2(6, 6), 0.05)
-								player.NBodySim.currentTimewarp = 0.007
-						elif (closestPlanet.position - player.position).length() <= 30:
+								player.NBodySim.currentTimewarp = 0.01
+
+						if (closestPlanet.position - player.position).length() <= 90:
 								player.score += 3
 								player.camera.zoom = lerp(player.camera.zoom, Vector2(8, 8), 0.05)
 								player.NBodySim.currentTimewarp = 0.007

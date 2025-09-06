@@ -1,4 +1,5 @@
 extends Node2D
+class_name planetIndicator
 
 @export var player : Player
 
@@ -20,7 +21,7 @@ func _process(_delta: float) -> void:
 				closestPlanet = allDistances.get(allDistances.find(allDistances.min()))[0] # gets the closest Object by distance
 				closestDistance = allDistances.get(allDistances.find(allDistances.min()))[1]
 				if closestPlanet:
-					if (player.position - closestPlanet.position).length() <= 1000:
+					if (player.position - closestPlanet.position).length() <= 10000:
 						if not player.nearMisser.isNearMiss:
 							arrows.show()
 							animation_player.play("Smooth")

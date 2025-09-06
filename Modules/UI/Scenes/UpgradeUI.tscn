@@ -1,0 +1,395 @@
+[gd_scene load_steps=20 format=3 uid="uid://cjtkfc0h5kahe"]
+
+[ext_resource type="Texture2D" uid="uid://ba7qrprnv4lpr" path="res://Modules/UI/Assets/UpgradesUI/UpgradeMenuBar.png" id="1_2mflv"]
+[ext_resource type="Script" uid="uid://c0w2dd15xms6n" path="res://Modules/UI/Scripts/UpgradesManager.gd" id="1_8beuh"]
+[ext_resource type="Texture2D" uid="uid://s76bioqf3bky" path="res://Modules/UI/Assets/UpgradesUI/Launch.png" id="3_fxgqn"]
+[ext_resource type="Texture2D" uid="uid://dvkq0lo0qjwen" path="res://Modules/UI/Assets/UpgradesUI/UpgradeConfirm.png" id="3_i2uec"]
+[ext_resource type="Texture2D" uid="uid://d3juquwo8hds2" path="res://Modules/UI/Assets/UpgradesUI/UpgradesPanel.png" id="3_u1ey7"]
+[ext_resource type="FontFile" uid="uid://v5ppclwsn5md" path="res://Modules/UI/Assets/BlackHanSans-Regular.ttf" id="4_dlrpp"]
+[ext_resource type="Texture2D" uid="uid://blipimt0e0in8" path="res://Modules/UI/Assets/UpgradesUI/Info.png" id="6_mxw08"]
+[ext_resource type="Texture2D" uid="uid://c4e1fed7npios" path="res://Modules/UI/Assets/UpgradesUI/InfoPanel.png" id="7_7puca"]
+[ext_resource type="Texture2D" uid="uid://bx5eetxi6yyqe" path="res://Modules/UI/Assets/UpgradesUI/Equipped.png" id="7_u1ey7"]
+[ext_resource type="Texture2D" uid="uid://c6swkm6kx58qh" path="res://Modules/UI/Assets/UpgradesUI/Quit.png" id="9_wj2fr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxw08"]
+font = ExtResource("4_dlrpp")
+font_size = 406
+outline_size = 110
+outline_color = Color(0.415686, 0.427451, 0.627451, 1)
+shadow_size = 201
+shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u1ey7"]
+font = ExtResource("4_dlrpp")
+font_size = 271
+outline_size = 85
+outline_color = Color(0.415686, 0.427451, 0.627451, 1)
+shadow_size = 171
+shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0wthv"]
+font = ExtResource("4_dlrpp")
+font_size = 271
+outline_size = 85
+outline_color = Color(0.623529, 0.470588, 0.698039, 1)
+shadow_size = 171
+shadow_color = Color(0.447059, 0.337255, 0.501961, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7puca"]
+font = ExtResource("4_dlrpp")
+font_size = 406
+outline_size = 110
+outline_color = Color(0.415686, 0.427451, 0.627451, 1)
+shadow_size = 201
+shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8beuh"]
+font = ExtResource("4_dlrpp")
+font_size = 406
+font_color = Color(0.909804, 0.870588, 1, 1)
+outline_size = 110
+outline_color = Color(0.415686, 0.427451, 0.627451, 1)
+shadow_size = 201
+shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="Animation" id="Animation_0wthv"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Vector2(0.136356, 0.136356), Vector2(0.965389, 0.965389)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CloseButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeMenuBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Vector2(265, 0.965389), Vector2(658, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeMenuBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wj2fr"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradeMenuBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Vector2(658, 0), Vector2(265, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CloseButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CloseButton:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.105112, 0.105112),
+"update": 0,
+"values": [Vector2(0.136356, 0.136356), Vector2(0.965389, 0.965389)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeMenuBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u1ey7"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CloseButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.136356, 0.136356)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeMenuBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(658, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeMenuBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1ey7"]
+_data = {
+&"Close": SubResource("Animation_0wthv"),
+&"Open": SubResource("Animation_wj2fr"),
+&"RESET": SubResource("Animation_u1ey7")
+}
+
+[node name="UpgradeUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8beuh")
+
+[node name="UpgradeMenuBar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 618.0
+offset_right = 660.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(9.11394, 28.8792)
+texture = ExtResource("1_2mflv")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenuBar"]
+layout_mode = 1
+offset_left = 2.74305
+offset_top = 4.0
+offset_right = 421.743
+offset_bottom = 1060.0
+scale = Vector2(0.0885203, 0.0340291)
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenuBar/ScrollContainer"]
+layout_mode = 2
+
+[node name="SlingBoostUpgrade" type="TextureRect" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_u1ey7")
+
+[node name="UpgradeImage" type="TextureRect" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+layout_mode = 0
+offset_left = 10.8442
+offset_top = 9.63932
+offset_right = 50.8442
+offset_bottom = 49.6393
+scale = Vector2(2, 2)
+texture = ExtResource("3_fxgqn")
+expand_mode = 1
+
+[node name="UpgradeName" type="Label" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+layout_mode = 0
+offset_left = 81.8078
+offset_top = 18.8079
+offset_right = 2629.81
+offset_bottom = 425.807
+scale = Vector2(0.0791208, 0.0791208)
+text = "Sling Boost"
+label_settings = SubResource("LabelSettings_mxw08")
+
+[node name="SlingShotUpgradeButton" type="TextureButton" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 334.966
+offset_top = 13.2541
+offset_right = 399.966
+offset_bottom = 84.2541
+texture_normal = ExtResource("3_i2uec")
+texture_disabled = ExtResource("7_u1ey7")
+stretch_mode = 0
+
+[node name="InfoButton" type="TextureRect" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+layout_mode = 0
+offset_left = 288.806
+offset_top = 14.7377
+offset_right = 338.806
+offset_bottom = 64.7377
+scale = Vector2(0.711868, 0.711868)
+texture = ExtResource("6_mxw08")
+
+[node name="UpgradeCost" type="Label" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 69.0
+offset_right = 1557.0
+offset_bottom = 365.0
+scale = Vector2(0.0791208, 0.0791208)
+text = "500"
+label_settings = SubResource("LabelSettings_u1ey7")
+horizontal_alignment = 1
+
+[node name="UpgradeMultiplier" type="Label" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
+layout_mode = 0
+offset_left = 219.394
+offset_top = 57.4756
+offset_right = 1382.39
+offset_bottom = 353.476
+scale = Vector2(0.104473, 0.104473)
+text = "1x"
+label_settings = SubResource("LabelSettings_0wthv")
+horizontal_alignment = 1
+
+[node name="UpgradeInfoPanel" type="TextureRect" parent="UpgradeMenuBar"]
+visible = false
+layout_mode = 0
+offset_left = 0.109722
+offset_top = 4.43226
+offset_right = 617.11
+offset_bottom = 377.432
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_7puca")
+
+[node name="UpgradeName" type="Label" parent="UpgradeMenuBar/UpgradeInfoPanel"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 62.0
+offset_right = 2658.0
+offset_bottom = 469.0
+scale = Vector2(0.151516, 0.151516)
+text = "Sling Boost"
+label_settings = SubResource("LabelSettings_7puca")
+horizontal_alignment = 1
+
+[node name="UpgradeInfomation" type="Label" parent="UpgradeMenuBar/UpgradeInfoPanel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 158.0
+offset_right = 6031.0
+offset_bottom = 1385.0
+scale = Vector2(0.084459, 0.084459)
+text = "This upgrade increases
+the power you boost each 
+time you slingshot"
+label_settings = SubResource("LabelSettings_8beuh")
+horizontal_alignment = 1
+
+[node name="UpgradeMenuBar2" type="TextureRect" parent="UpgradeMenuBar"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_right = 42.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(1.00003, 1.00001)
+texture = ExtResource("1_2mflv")
+expand_mode = 1
+flip_h = true
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+anchor_left = 4.97274
+anchor_top = 1.92615
+anchor_right = 5.33067
+anchor_bottom = 2.30113
+offset_left = -44.9095
+offset_top = -44.0458
+offset_right = 45.7731
+offset_bottom = 50.955
+scale = Vector2(0.136356, 0.136356)
+pivot_offset = Vector2(52, 51)
+texture_normal = ExtResource("9_wj2fr")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u1ey7")
+}
+
+[connection signal="pressed" from="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade/SlingShotUpgradeButton" to="." method="_onUpgradeButtonClicked" binds= ["SlingBoost", NodePath(".."), 500]]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

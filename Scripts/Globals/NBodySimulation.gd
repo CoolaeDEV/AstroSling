@@ -28,9 +28,14 @@ func _runningSetter(value : bool):
 	
 	if value == false:
 		player.canSlingShot = false
+		player.trajectoryVisualizer.show()
+		player.planetIndic.show()
 	else:
 		player.canSlingShot = true
-	
+		player.trajectoryVisualizer.show()
+		player.planetIndic.show()
+		player.checkUpgradesAndApply()
+
 	setRunningState.emit()
 
 func _ready() -> void:

@@ -24,15 +24,15 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if draggin:
-		# zoom out while dragging
-		player.camera.zoom = player.camera.zoom.lerp(zoom_out_factor, zoom_lerp_speed)
-
-		# inverse offset (camera moves opposite to finger)
-		var drag_dir = (player.camera.global_position - vecFinish) * offset_strength
-		player.camera.offset = player.camera.offset.lerp(drag_dir, offset_lerp_speed)
-		player.NBodySim.currentTimewarp = lerp(player.NBodySim.currentTimewarp, 0.005, 0.5)
-		
 		if player.NBodySim.running and player.canSlingShot:
+			# zoom out while dragging
+			player.camera.zoom = player.camera.zoom.lerp(zoom_out_factor, zoom_lerp_speed)
+
+			# inverse offset (camera moves opposite to finger)
+			var drag_dir = (player.camera.global_position - vecFinish) * offset_strength
+			player.camera.offset = player.camera.offset.lerp(drag_dir, offset_lerp_speed)
+			player.NBodySim.currentTimewarp = lerp(player.NBodySim.currentTimewarp, 0.005, 0.5)
+			
 			vecFinish = get_global_mouse_position()
 			var worldPoints = [vecStart, vecFinish]
 			var localPoints : PackedVector2Array = []
@@ -40,12 +40,12 @@ func _process(_delta: float) -> void:
 				localPoints.append(to_local(p))
 			points = localPoints
 		
-		if player.doDrawTrajectory and player.canSlingShot:
-			var worldPoints = predict_trajectory(player, (player.currentVelocity + (vecStart - vecFinish) * player.slingShotPowerMultipler / 600), player.NBodySim.allBodies, 50)
-			var localPoints : PackedVector2Array = []
-			for p in worldPoints:
-				localPoints.append(to_local(p))
-			newtrajectory.points = localPoints
+			if player.doDrawTrajectory:
+				worldPoints = predict_trajectory(player, (player.currentVelocity + (vecStart - vecFinish) * player.slingShotPowerMultipler / 600), player.NBodySim.allBodies, 50)
+				localPoints = []
+				for p in worldPoints:
+					localPoints.append(to_local(p))
+				newtrajectory.points = localPoints
 
 	elif draggin == false and player.crashed == false:
 		# reset zoom + offset when not dragging
@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 			clear_points()
 			newtrajectory.clear_points()
 
-func predict_trajectory(body, vel: Vector2, planets: Array, steps: int = 300, dt: float = 0.05) -> PackedVector2Array:
+func predict_trajectory(body, vel: Vector2, planets: Array, steps: int = 1000, dt: float = 0.1) -> PackedVector2Array:
 	var points := PackedVector2Array()
 	points.resize(steps + 1)
 

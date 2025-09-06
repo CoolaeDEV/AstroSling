@@ -26,6 +26,8 @@ const MOON_LIKE : Texture2D = preload("res://Modules/UI/Assets/PlayUI/MoonLike.p
 @onready var kill_box: Area2D = $KillBox
 @onready var collision_shape_2d: CircleShape2D = $KillBox/CollisionShape2D.shape
 
+@onready var death_sfx: AudioStreamPlayer2D = $DeathSFX
+
 var rng := RandomNumberGenerator.new()
 var Radius : float = 16.0
 var rotationSpeed := 0.0
@@ -87,7 +89,4 @@ func createVisual() -> void:
 func _on_kill_box_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.crashed = true
-		Audio.play(Audio.AudioSettings.new()
-					.set_path("res://Audio/Death.wav")
-					.set_bus("res://Audio/MainAudioBus.tres")
-					.set_volume(1.0))
+		death_sfx.play()

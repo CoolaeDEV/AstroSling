@@ -44,17 +44,19 @@ func addUpgrade(upType: upgradeType):
 func _on_close_button_pressed() -> void:
 	if not isClosed:
 		animation_player.play("Close")
+
 func _onUpgradeButtonClicked(upgradeName: String, upgradeButtonPath: NodePath, upgradeCost: int) -> void:
-	match upgradeName:
-		"SlingBoost":
-			if player.coins >= 500:
-				player.coins -= 500
-				addUpgrade(upgradeType.SlingBoost)
-				var upButton = get_node(upgradeButtonPath).find_child("SlingShotUpgradeButton")
-				if upButton is TextureButton:
-					upButton.disabled = true
-			else:
-				print("Your too Broke")
+	if not player.tutorialUI.doShowTutorial:
+		match upgradeName:
+			"SlingBoost":
+				if player.coins >= 500:
+					player.coins -= 500
+					addUpgrade(upgradeType.SlingBoost)
+					var upButton = get_node(upgradeButtonPath).find_child("SlingShotUpgradeButton")
+					if upButton is TextureButton:
+						upButton.disabled = true
+				else:
+					print("Your too Broke")
 
 func _on_close_area_pressed() -> void:
 	if not isClosed and not player.NBodySim.running:

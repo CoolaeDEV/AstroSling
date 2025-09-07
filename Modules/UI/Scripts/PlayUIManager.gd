@@ -67,23 +67,27 @@ func _onSlingShotDisableMouseExited() -> void:
 
 func _on_play_button_pressed() -> void:
 	if player:
-		player.canSlingShot = false
-		if not player.NBodySim.running:
-			player.position = player.initalPosition
-			player.NBodySim.running = true
+		if not player.tutorialUI.doShowTutorial:
+			player.canSlingShot = false
+			if not player.NBodySim.running:
+				player.position = player.initalPosition
+				player.NBodySim.running = true
 
 func _on_quit_button_pressed() -> void:
 	if player:
-		player.reset()
+		if not player.tutorialUI.doShowTutorial:
+			player.reset()
 
 func _on_upgrade_button_pressed() -> void:
-	upgradeUI.animation_player.play("Open")
-	upgradeUI.isClosed = false
-	if upgradeUI.tutorialTimerStartedAlready == false:
-		upgradeUI.animation_player_2.play("TutorialStart")
-		upgradeUI.Tutorialtimer.start()
-		upgradeUI.tutorialTimerStartedAlready = true
+	if not player.tutorialUI.doShowTutorial:
+		upgradeUI.animation_player.play("Open")
+		upgradeUI.isClosed = false
+		if upgradeUI.tutorialTimerStartedAlready == false:
+			upgradeUI.animation_player_2.play("TutorialStart")
+			upgradeUI.Tutorialtimer.start()
+			upgradeUI.tutorialTimerStartedAlready = true
 
 func _on_home_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Modules/UI/Scenes/MainMenu.tscn")
-	player.NBodySim.queue_free() # This is the main root of the MainGame so deleting it kills the game
+	if not player.tutorialUI.doShowTutorial:
+		get_tree().change_scene_to_file("res://Modules/UI/Scenes/MainMenu.tscn")
+		player.NBodySim.queue_free() # This is the main root of the MainGame so deleting it kills the game

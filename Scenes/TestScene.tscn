@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cofnh5nbfu1ge"]
+[gd_scene load_steps=21 format=3 uid="uid://cofnh5nbfu1ge"]
 
 [ext_resource type="Script" uid="uid://balsm43am56p" path="res://Scripts/Globals/NBodySimulation.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://e5njbu5ok5ai" path="res://Modules/Player/Scenes/Player.tscn" id="1_b5ayd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qea3w21va8h2" path="res://Modules/UI/Scenes/RestartUI.tscn" id="6_6xh1p"]
 [ext_resource type="Texture2D" uid="uid://cm14i1lturtv3" path="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png" id="6_xjl2p"]
 [ext_resource type="PackedScene" uid="uid://cjtkfc0h5kahe" path="res://Modules/UI/Scenes/UpgradeUI.tscn" id="8_8c81w"]
+[ext_resource type="PackedScene" uid="uid://bvyp2lnng4mnj" path="res://Modules/UI/Scenes/TutorialUI.tscn" id="9_p30di"]
 [ext_resource type="PackedScene" uid="uid://dd3ap8s763u25" path="res://Modules/Player/Assets/PlanetIndicator/PlanetIndicator.tscn" id="10_201fe"]
 [ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="11_p30di"]
 [ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="12_8c81w"]
@@ -48,12 +49,13 @@ metadata/_custom_type_script = "uid://bkhxqrg1vl7yd"
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_0f5h7")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI", "nearMisser", "planetIndic") instance=ExtResource("1_b5ayd")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "resetUI", "PlayUI", "nearMisser", "planetIndic", "tutorialUI") instance=ExtResource("1_b5ayd")]
 camera = NodePath("../MainCamera")
 resetUI = NodePath("../MainCamera/CanvasLayer/RestartUi")
 PlayUI = NodePath("../MainCamera/CanvasLayer/PlayUi")
 nearMisser = NodePath("../NearMisser")
 planetIndic = NodePath("../PlanetIndicator")
+tutorialUI = NodePath("../MainCamera/CanvasLayer/TutorialUi")
 initalVelocity = Vector2(0, -300)
 
 [node name="PlanetGenerator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_p30di")]
@@ -90,6 +92,8 @@ player = NodePath("../../../Player")
 offset_top = 109.0
 offset_bottom = 149.0
 player = NodePath("../../../Player")
+
+[node name="TutorialUi" parent="MainCamera/CanvasLayer" instance=ExtResource("9_p30di")]
 
 [node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
 player = NodePath("../Player")

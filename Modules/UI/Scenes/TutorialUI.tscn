@@ -1,4 +1,13 @@
-[gd_scene format=3 uid="uid://bvyp2lnng4mnj"]
+[gd_scene load_steps=9 format=3 uid="uid://bvyp2lnng4mnj"]
+
+[ext_resource type="Texture2D" uid="uid://iib1wbarx8bl" path="res://Modules/UI/Assets/TutorialUI/Tutorial1.png" id="1_c3ap3"]
+[ext_resource type="Script" uid="uid://cj5b1ufnltihx" path="res://Modules/UI/Scripts/TutorialScript.gd" id="2_dy7ds"]
+[ext_resource type="Texture2D" uid="uid://ptqxrjp5fgk8" path="res://Modules/UI/Assets/TutorialUI/Tutorial2.png" id="3_8xgnl"]
+[ext_resource type="Texture2D" uid="uid://dwcni53liuo6v" path="res://Modules/UI/Assets/TutorialUI/NextButton.png" id="3_guxnd"]
+[ext_resource type="Texture2D" uid="uid://d3atviodo1qtw" path="res://Modules/UI/Assets/TutorialUI/Tutorial3.png" id="4_guxnd"]
+[ext_resource type="Texture2D" uid="uid://bdcdg5g2yywbe" path="res://Modules/UI/Assets/TutorialUI/Tutorial4.png" id="5_74trk"]
+[ext_resource type="Texture2D" uid="uid://dp2ielcosvdoi" path="res://Modules/UI/Assets/TutorialUI/BackButton.png" id="5_t354q"]
+[ext_resource type="Texture2D" uid="uid://n853w7r4inr" path="res://Modules/UI/Assets/TutorialUI/DoneButton.png" id="8_7n8qk"]
 
 [node name="TutorialUi" type="Control"]
 layout_mode = 3
@@ -7,3 +16,91 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_dy7ds")
+
+[node name="Tutorial1" type="Sprite2D" parent="."]
+position = Vector2(315, 535)
+scale = Vector2(0.175145, 0.175145)
+texture = ExtResource("1_c3ap3")
+
+[node name="NextButton" type="TextureButton" parent="Tutorial1"]
+offset_left = 176.996
+offset_top = 1313.2
+offset_right = 642.996
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("3_guxnd")
+
+[node name="Tutorial2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(315, 535)
+scale = Vector2(0.175145, 0.175145)
+texture = ExtResource("3_8xgnl")
+
+[node name="NextButton2" type="TextureButton" parent="Tutorial2"]
+offset_left = 176.996
+offset_top = 1313.2
+offset_right = 642.996
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("3_guxnd")
+
+[node name="BackButton" type="TextureButton" parent="Tutorial2"]
+offset_left = -1033.43
+offset_top = 1313.2
+offset_right = -567.429
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("5_t354q")
+
+[node name="Tutorial3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(315, 535)
+scale = Vector2(0.175145, 0.175145)
+texture = ExtResource("4_guxnd")
+
+[node name="NextButton2" type="TextureButton" parent="Tutorial3"]
+offset_left = 176.996
+offset_top = 1313.2
+offset_right = 642.996
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("3_guxnd")
+
+[node name="BackButton" type="TextureButton" parent="Tutorial3"]
+offset_left = -1033.43
+offset_top = 1313.2
+offset_right = -567.429
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("5_t354q")
+
+[node name="Tutorial4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(315, 535)
+scale = Vector2(0.175145, 0.175145)
+texture = ExtResource("5_74trk")
+
+[node name="DoneButton" type="TextureButton" parent="Tutorial4"]
+offset_left = 176.996
+offset_top = 1313.2
+offset_right = 642.996
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("8_7n8qk")
+
+[node name="BackButton" type="TextureButton" parent="Tutorial4"]
+offset_left = -1033.43
+offset_top = 1313.2
+offset_right = -567.429
+offset_bottom = 1586.2
+scale = Vector2(2.06866, 2.06866)
+texture_normal = ExtResource("5_t354q")
+
+[connection signal="pressed" from="Tutorial1/NextButton" to="." method="_onNextTutorialPressed" binds= [2]]
+[connection signal="pressed" from="Tutorial2/NextButton2" to="." method="_onNextTutorialPressed" binds= [3]]
+[connection signal="pressed" from="Tutorial2/BackButton" to="." method="_onBackTutorialPressed" binds= [1]]
+[connection signal="pressed" from="Tutorial3/NextButton2" to="." method="_onNextTutorialPressed" binds= [4]]
+[connection signal="pressed" from="Tutorial3/BackButton" to="." method="_onBackTutorialPressed" binds= [2]]
+[connection signal="pressed" from="Tutorial4/DoneButton" to="." method="_onDonePressed"]
+[connection signal="pressed" from="Tutorial4/BackButton" to="." method="_onBackTutorialPressed" binds= [3]]

@@ -9,6 +9,8 @@ class_name Player
 @export var trajectoryVisualizer : TrajectorVisualizer
 @export var nearMisser : NearMisser
 @export var planetIndic : planetIndicator
+@export var tutorialUI : TutorialUI
+
 var NBodySim : NBodySimulation
 var universe : Universe
 

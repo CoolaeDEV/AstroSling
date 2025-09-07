@@ -1,33 +1,46 @@
 extends Control
 class_name PlayUI
 
-@onready var score: Label = $Score
+@onready var score: Label = $TopBar/Score
 @onready var slingshotsuage: TextureProgressBar = $slingshotsuage
 @onready var slingshotPercent: Label = $slingshotsuage/Label
 
-@onready var high_score: Label = $TextureRect/HighScore
+@onready var high_score: Label = $TopBar/TextureRect/HighScore
 @onready var play_button: TextureButton = $playButton
 @onready var quit_button: TextureButton = $quitButton
 @onready var upgrade_button: TextureButton = $UpgradeButton
 @onready var wardrobe_button: TextureButton = $WardrobeButton
 @onready var shop_button: TextureButton = $ShopButton
+@onready var top_bar: Control = $TopBar
+@onready var home_button: TextureButton = $HomeButton
 
-@onready var coins: Label = $TextureRect2/Coins
+@onready var coins: Label = $TopBar/TextureRect2/Coins
+
 
 var playbuttonTexture := preload("res://Modules/UI/Assets/PlayUI/Play.png")
 var playingButtonTexture := preload("res://Modules/UI/Assets/PlayUI/Playing.png")
 
+var MainMenu := preload("res://Modules/UI/Scenes/MainMenu.tscn")
+
 @export var player: Player
 @export var upgradeUI : UpgradesManager
 
+func _ready() -> void:
+	if player:
+		if player.universe.isFreeplayModeOn:
+			top_bar.hide()
+		else:
+			top_bar.show()
+
 func _process(_delta: float) -> void:
 	if player:
-		score.text = str(snapped(player.score, 0))
-		slingshotsuage.value = lerp(slingshotsuage.value, player.slingShotUsage, 0.05)
-		slingshotPercent.text = str(snapped(player.slingShotUsage, 0)) + "%"
-		high_score.text = str(snapped(player.HighScore, 0))
-		
-		coins.text = str(snapped(player.coins, 0))
+		if not player.universe.isFreeplayModeOn:
+			score.text = str(snapped(player.score, 0))
+			slingshotsuage.value = lerp(slingshotsuage.value, player.slingShotUsage, 0.05)
+			slingshotPercent.text = str(snapped(player.slingShotUsage, 0)) + "%"
+			high_score.text = str(snapped(player.HighScore, 0))
+			
+			coins.text = str(snapped(player.coins, 0))
 		
 		if player.NBodySim.running:
 			play_button.texture_normal = playingButtonTexture
@@ -35,12 +48,14 @@ func _process(_delta: float) -> void:
 			upgrade_button.hide()
 			wardrobe_button.hide()
 			shop_button.hide()
+			home_button.hide()
 		else:
 			play_button.texture_normal = playbuttonTexture
 			quit_button.hide()
 			upgrade_button.show()
 			wardrobe_button.show()
 			shop_button.show()
+			home_button.show()
 			
 func _onSlingShotDisableMouseEntered() -> void:
 	if player:
@@ -68,3 +83,7 @@ func _on_upgrade_button_pressed() -> void:
 		upgradeUI.animation_player_2.play("TutorialStart")
 		upgradeUI.Tutorialtimer.start()
 		upgradeUI.tutorialTimerStartedAlready = true
+
+func _on_home_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Modules/UI/Scenes/MainMenu.tscn")
+	player.NBodySim.queue_free() # This is the main root of the MainGame so deleting it kills the game

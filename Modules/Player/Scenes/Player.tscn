@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://e5njbu5ok5ai"]
+[gd_scene load_steps=10 format=3 uid="uid://e5njbu5ok5ai"]
 
 [ext_resource type="Script" uid="uid://qcis4x5bgna3" path="res://Modules/Player/Scripts/Player.gd" id="1_xav6x"]
 [ext_resource type="PackedScene" uid="uid://c5tr2wccvkyhw" path="res://Modules/Player/Assets/TrajectoryVisualizer/TrajectoryVisualizer.tscn" id="2_abdl7"]
 [ext_resource type="PackedScene" uid="uid://d4aslfh8n7p88" path="res://Modules/Player/Assets/Slingshot/SlingShot.tscn" id="3_a3n3f"]
+[ext_resource type="Texture2D" uid="uid://dee1vc3bloolo" path="res://Modules/UI/Assets/PlayUI/Player.png" id="4_7gt1m"]
+[ext_resource type="Texture2D" uid="uid://bbhba84gfxg66" path="res://Modules/UI/Assets/PlayUI/Rocket.png" id="5_sqm7q"]
+[ext_resource type="Texture2D" uid="uid://e7hvsaeq0570" path="res://Modules/UI/Assets/PlayUI/singluar.png" id="5_svt2i"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_abdl7"]
-points = PackedVector2Array(0, -10, 10, 10, -10, 10)
+points = PackedVector2Array(0, -11, 12, 10, -12, 10)
 
-[sub_resource type="PrismMesh" id="PrismMesh_a3n3f"]
-size = Vector3(20, 20, 1)
+[sub_resource type="Curve" id="Curve_svt2i"]
+_data = [Vector2(0, 0.794526), 0.0, 0.0, 0, 0, Vector2(1, 0.19815), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hxcp7"]
+colors = PackedColorArray(1, 1, 1, 1, 0.33915, 0.107496, 0.0647103, 1)
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("trajectoryVisualizer")]
 gravity_scale = 0.0
@@ -23,6 +30,51 @@ texture = null
 
 [node name="SlingShot" parent="." instance=ExtResource("3_a3n3f")]
 
-[node name="Mesh" type="MeshInstance2D" parent="."]
-rotation = -3.14159
-mesh = SubResource("PrismMesh_a3n3f")
+[node name="player" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.144279, 0.144279)
+texture = ExtResource("4_7gt1m")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-7, 17)
+rotation = 1.5708
+scale = Vector2(0.501448, 0.478575)
+amount = 105
+texture = ExtResource("5_svt2i")
+randomness = 0.17
+emission_shape = 1
+emission_sphere_radius = 7.14
+spread = 14.76
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_svt2i")
+color = Color(0.92013, 0.466227, 0.377486, 1)
+color_ramp = SubResource("Gradient_hxcp7")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(7, 17)
+rotation = 1.5708
+scale = Vector2(0.501448, 0.478575)
+amount = 105
+texture = ExtResource("5_svt2i")
+randomness = 0.17
+emission_shape = 1
+emission_sphere_radius = 7.14
+spread = 14.76
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_svt2i")
+color = Color(0.92013, 0.466227, 0.377486, 1)
+color_ramp = SubResource("Gradient_hxcp7")
+
+[node name="Rocktthrusters" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(0.0708613, 0.0708613)
+texture = ExtResource("5_sqm7q")
+offset = Vector2(0, 56.4483)

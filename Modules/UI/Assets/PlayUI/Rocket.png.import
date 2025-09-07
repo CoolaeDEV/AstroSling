@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm14i1lturtv3"
-path="res://.godot/imported/mosaic00001(1).png-78c4c79d3bbf3191c5a44447521b045d.ctex"
+uid="uid://bbhba84gfxg66"
+path="res://.godot/imported/Rocket.png-0bf4a40f7c8af7537251cae481316cf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png"
-dest_files=["res://.godot/imported/mosaic00001(1).png-78c4c79d3bbf3191c5a44447521b045d.ctex"]
+source_file="res://Modules/UI/Assets/PlayUI/Rocket.png"
+dest_files=["res://.godot/imported/Rocket.png-0bf4a40f7c8af7537251cae481316cf6.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

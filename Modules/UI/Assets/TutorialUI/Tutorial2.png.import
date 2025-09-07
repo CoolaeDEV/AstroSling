@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm14i1lturtv3"
-path="res://.godot/imported/mosaic00001(1).png-78c4c79d3bbf3191c5a44447521b045d.ctex"
+uid="uid://ptqxrjp5fgk8"
+path="res://.godot/imported/Tutorial2.png-c6ad281dc264955dfbd08a13d8925701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modules/UI/Assets/MainMenu/mosaic00001(1).png"
-dest_files=["res://.godot/imported/mosaic00001(1).png-78c4c79d3bbf3191c5a44447521b045d.ctex"]
+source_file="res://Modules/UI/Assets/TutorialUI/Tutorial2.png"
+dest_files=["res://.godot/imported/Tutorial2.png-c6ad281dc264955dfbd08a13d8925701.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

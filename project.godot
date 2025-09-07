@@ -20,13 +20,13 @@ config/icon="uid://cp4t6xck2lyt"
 [autoload]
 
 UIAnimation="*res://addons/godot_ui_animations/UIAnimationHandler.tscn"
+Universe="*res://Scripts/Globals/Universe.gd"
 
 [display]
 
 window/size/viewport_width=648
 window/size/viewport_height=1152
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [dotnet]
@@ -72,7 +72,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

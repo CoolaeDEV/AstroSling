@@ -17,6 +17,7 @@ shadow_offset = Vector2(0, 2)
 script = ExtResource("1_o2w2d")
 
 [node name="playerArrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-41, -2)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ybhx1")
@@ -27,6 +28,7 @@ position = Vector2(42.5, 0)
 scale = Vector2(2.26252, 2.26252)
 
 [node name="planetArrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(44, 0)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ybhx1")

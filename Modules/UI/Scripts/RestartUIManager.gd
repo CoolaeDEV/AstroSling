@@ -3,6 +3,7 @@ extends Control
 @onready var max_speed: Label = $Panel/MaxSpeedRect/MaxSpeed
 @onready var max_altitude: Label = $Panel/maxAlttextureRect/MaxAltitude
 @onready var coins: Label = $Panel/CoinsRect/Coins
+@onready var coins_rect: TextureRect = $Panel/CoinsRect
 
 @onready var restartbutton: TextureButton = $Panel/Restartbutton
 @onready var restart_with_ads_button: TextureButton = $Panel/RestartWithAdsButton
@@ -15,7 +16,7 @@ var mouseInResetButton := false
 var mouseInResetAdButton := false
 
 func _ready():
-	if OS.get_name() == "Windows" || OS.get_name() == "Web":
+	if OS.get_name() == "Windows" || OS.get_name() == "Web" || player.universe.isFreeplayModeOn:
 		restart_with_ads_button.hide()
 
 func _on_restart_button_pressed() -> void:
@@ -31,6 +32,11 @@ func _on_visibility_changed() -> void:
 		max_altitude.text = str(snapped(player.maxAltitude, 0)) + "km"
 		
 		coins.text = str(snapped((player.score / 2.5) * player.coinMultiplier, 0))
+	
+		if  player.universe.isFreeplayModeOn:
+			coins_rect.hide()
+		else:
+			coins_rect.show()
 		
 func _process(_delta: float) -> void:
 		if mouseInResetButton:

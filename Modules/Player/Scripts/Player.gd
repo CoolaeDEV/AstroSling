@@ -10,6 +10,7 @@ class_name Player
 @export var nearMisser : NearMisser
 @export var planetIndic : planetIndicator
 var NBodySim : NBodySimulation
+var universe : Universe
 
 # -Velocity Vars-
 @export_category("Velocity Vars")
@@ -48,6 +49,9 @@ var slingShotUsage : float = 100.0
 var score := 0.0
 var HighScore := 0.0
 
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var cpu_particles_2d_2: CPUParticles2D = $CPUParticles2D2
+
 func _ready():
 	if get_parent() is NBodySimulation:
 		NBodySim = get_parent()
@@ -55,9 +59,14 @@ func _ready():
 		initalAltitude = position.y
 	initalPosition = position
 
+	for i in get_tree().root.get_children():
+		if i is Universe:
+			universe = i 
 
 func _process(_delta: float) -> void:
 	if NBodySim.running:
+		cpu_particles_2d.emitting = true
+		cpu_particles_2d_2.emitting = true
 		if crashed:
 			if resetUI:
 				resetUI.show()
@@ -74,13 +83,15 @@ func _process(_delta: float) -> void:
 			maxAltitude = altitude
 
 		altitude = (initalAltitude - position.y) / 5
-
+		
 		if slingShotUsage <= 0:
 			canSlingShot = false
 	else:
 		camera.zoom = lerp(camera.zoom, Vector2(6,6), 0.5)
 		trajectoryVisualizer.hide()
 		planetIndic.hide()
+		cpu_particles_2d.emitting = false
+		cpu_particles_2d_2.emitting = false
 
 func checkUpgradesAndApply():
 	upgrades.all(func(i):
@@ -115,7 +126,9 @@ func reset():
 
 	crashed = false
 	currentVelocity = initalVelocity
-	coins += (score / 2.5) * coinMultiplier
+	if not universe.isFreeplayModeOn:
+		coins += (score / 2.5) * coinMultiplier
+
 	NBodySim.currentTimewarp = NBodySim.Timewarps[0]
 
 	maxVelocity = 0

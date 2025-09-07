@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjtkfc0h5kahe"]
+[gd_scene load_steps=32 format=3 uid="uid://cjtkfc0h5kahe"]
 
 [ext_resource type="Texture2D" uid="uid://ba7qrprnv4lpr" path="res://Modules/UI/Assets/UpgradesUI/UpgradeMenuBar.png" id="1_2mflv"]
 [ext_resource type="Script" uid="uid://c0w2dd15xms6n" path="res://Modules/UI/Scripts/UpgradesManager.gd" id="1_8beuh"]
@@ -56,6 +56,13 @@ outline_color = Color(0.415686, 0.427451, 0.627451, 1)
 shadow_size = 201
 shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
 shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1ey7"]
+bg_color = Color(0.137255, 0.141176, 0.203922, 1)
+border_width_left = 3
+border_width_top = 2
+border_color = Color(0.294118, 0.301961, 0.423529, 1)
+corner_radius_top_left = 10
 
 [sub_resource type="Animation" id="Animation_0wthv"]
 resource_name = "Close"
@@ -173,7 +180,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -219,6 +226,28 @@ _data = {
 &"RESET": SubResource("Animation_u1ey7")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1ey7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s3rkd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hr7v3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ioidv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_easku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87v66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3tvh3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3jl3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wthv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52tfu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rc0gy"]
+
 [node name="UpgradeUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -242,11 +271,11 @@ expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeMenuBar"]
 layout_mode = 1
-offset_left = 2.74305
+offset_left = 3.0
 offset_top = 4.0
-offset_right = 421.743
-offset_bottom = 1060.0
-scale = Vector2(0.0885203, 0.0340291)
+offset_right = 422.0
+offset_bottom = 1182.0
+scale = Vector2(0.0880752, 0.03036)
 follow_focus = true
 horizontal_scroll_mode = 0
 
@@ -371,7 +400,16 @@ texture = ExtResource("1_2mflv")
 expand_mode = 1
 flip_h = true
 
+[node name="Panel" type="Panel" parent="UpgradeMenuBar"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 128.0
+offset_bottom = 12.0
+scale = Vector2(0.328107, 0.0811773)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1ey7")
+
 [node name="CloseButton" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 anchor_left = 4.97274
 anchor_top = 1.92615
@@ -391,5 +429,24 @@ libraries = {
 &"": SubResource("AnimationLibrary_u1ey7")
 }
 
+[node name="CloseArea" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 153.0
+offset_right = 263.0
+offset_bottom = 1151.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u1ey7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_s3rkd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hr7v3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ioidv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_easku")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_87v66")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3tvh3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_v3jl3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0wthv")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_52tfu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rc0gy")
+
 [connection signal="pressed" from="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade/SlingShotUpgradeButton" to="." method="_onUpgradeButtonClicked" binds= ["SlingBoost", NodePath(".."), 500]]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseArea" to="." method="_on_close_area_pressed"]

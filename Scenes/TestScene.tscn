@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cofnh5nbfu1ge"]
+[gd_scene load_steps=23 format=3 uid="uid://cofnh5nbfu1ge"]
 
 [ext_resource type="Script" uid="uid://balsm43am56p" path="res://Scripts/Globals/NBodySimulation.gd" id="1_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://e5njbu5ok5ai" path="res://Modules/Player/Scenes/Player.tscn" id="1_b5ayd"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="11_p30di"]
 [ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="12_8c81w"]
 [ext_resource type="Script" uid="uid://bxsk7uywkd145" path="res://addons/postfx/effects/ChromaticAberrationFX.gd" id="13_fi7j4"]
-[ext_resource type="Script" uid="uid://cqqc7s7kp8uem" path="res://addons/postfx/effects/VignetteFX.gd" id="14_4v62a"]
 [ext_resource type="Script" uid="uid://c7ohpi2e8bpp0" path="res://addons/postfx/effects/LensFlareFX.gd" id="15_c2lnq"]
 [ext_resource type="Script" uid="uid://bkhxqrg1vl7yd" path="res://addons/postfx/effects/ColorCorrectionFX.gd" id="16_p30di"]
 [ext_resource type="PackedScene" uid="uid://bl27iptfprrq3" path="res://Modules/CelestialBody/Scenes/CelestialBody.tscn" id="17_8c81w"]
@@ -31,13 +30,6 @@ script = ExtResource("13_fi7j4")
 strength = 1.365
 enabled = true
 metadata/_custom_type_script = "uid://bxsk7uywkd145"
-
-[sub_resource type="Resource" id="Resource_65o0v"]
-script = ExtResource("14_4v62a")
-intensity = 0.375
-color = Color(0, 0, 0, 1)
-enabled = true
-metadata/_custom_type_script = "uid://cqqc7s7kp8uem"
 
 [sub_resource type="Resource" id="Resource_o5yho"]
 script = ExtResource("15_c2lnq")
@@ -128,6 +120,8 @@ visible = false
 player = NodePath("../../../Player")
 
 [node name="UpgradeUi" parent="MainCamera/CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_8c81w")]
+offset_top = 109.0
+offset_bottom = 149.0
 player = NodePath("../../../Player")
 
 [node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
@@ -141,5 +135,5 @@ environment = SubResource("Environment_201fe")
 
 [node name="PostFX" type="CanvasLayer" parent="."]
 script = ExtResource("11_p30di")
-effects = Array[ExtResource("12_8c81w")]([SubResource("Resource_1vcy8"), SubResource("Resource_65o0v"), SubResource("Resource_o5yho"), SubResource("Resource_8c81w")])
+effects = Array[ExtResource("12_8c81w")]([SubResource("Resource_1vcy8"), SubResource("Resource_o5yho"), SubResource("Resource_8c81w")])
 metadata/_custom_type_script = "uid://d15nobs3uuxeb"

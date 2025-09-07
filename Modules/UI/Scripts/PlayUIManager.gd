@@ -57,3 +57,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_upgrade_button_pressed() -> void:
 	upgradeUI.animation_player.play("Open")
+	upgradeUI.isClosed = false

@@ -16,6 +16,8 @@ enum upgradeType{
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var isClosed := true
+
 func addUpgrade(upType: upgradeType):
 	if player:
 		var newUpgrade = {}
@@ -30,7 +32,8 @@ func addUpgrade(upType: upgradeType):
 		player.upgrades.append(newUpgrade)
 
 func _on_close_button_pressed() -> void:
-	animation_player.play("Close")
+	if not isClosed:
+		animation_player.play("Close")
 	
 
 func _onUpgradeButtonClicked(upgradeName: String, upgradeButtonPath: NodePath, upgradeCost: int) -> void:
@@ -44,3 +47,8 @@ func _onUpgradeButtonClicked(upgradeName: String, upgradeButtonPath: NodePath, u
 					upButton.disabled = true
 			else:
 				print("Your too Broke")
+
+
+func _on_close_area_pressed() -> void:
+	if not isClosed and not player.NBodySim.running:
+		animation_player.play("Close")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://y6tjv5shi7a5"]
+[gd_scene load_steps=25 format=3 uid="uid://y6tjv5shi7a5"]
 
 [ext_resource type="Script" uid="uid://c7kvghby57635" path="res://Modules/UI/Scripts/PlayUIManager.gd" id="1_ba1qd"]
 [ext_resource type="FontFile" uid="uid://cxe0bbixqghmp" path="res://Modules/UI/Assets/Belanosima-Regular.ttf" id="2_asov5"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bd14atupo2p1f" path="res://Modules/UI/Assets/PlayUI/Rectangle 96.png" id="8_gw5bi"]
 [ext_resource type="Texture2D" uid="uid://dwln16r44gk0u" path="res://Modules/UI/Assets/PlayUI/UpgradeButton.png" id="8_o23ev"]
 [ext_resource type="Texture2D" uid="uid://b0jirjs0hta1t" path="res://Modules/UI/Assets/PlayUI/IndicatorIcons.png" id="8_qg725"]
+[ext_resource type="Texture2D" uid="uid://olncg1shgr4w" path="res://Modules/UI/Assets/PlayUI/Wardrobe.png" id="9_1niyt"]
+[ext_resource type="Texture2D" uid="uid://b4wbgya56ysj" path="res://Modules/UI/Assets/PlayUI/WardrobeDisabled.png" id="9_md11i"]
+[ext_resource type="Texture2D" uid="uid://q4q1kmj7ulvn" path="res://Modules/UI/Assets/PlayUI/Shop.png" id="10_gcpbw"]
+[ext_resource type="Texture2D" uid="uid://bpe4adm26aptj" path="res://Modules/UI/Assets/PlayUI/ShopDisabled.png" id="11_md11i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asov5"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 0.815686)
@@ -54,6 +58,24 @@ outline_size = 110
 outline_color = Color(0.415686, 0.427451, 0.627451, 1)
 shadow_size = 201
 shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_md11i"]
+font = ExtResource("2_dq65k")
+font_size = 406
+outline_size = 110
+outline_color = Color(0.627451, 0.415686, 0.592157, 1)
+shadow_size = 201
+shadow_color = Color(0.462745, 0.298039, 0.435294, 1)
+shadow_offset = Vector2(0, 13.815)
+
+[sub_resource type="LabelSettings" id="LabelSettings_62me3"]
+font = ExtResource("2_dq65k")
+font_size = 406
+outline_size = 110
+outline_color = Color(0.803922, 0.74902, 0.443137, 1)
+shadow_size = 201
+shadow_color = Color(0.572549, 0.537255, 0.345098, 1)
 shadow_offset = Vector2(0, 13.815)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qg725"]
@@ -225,6 +247,69 @@ offset_bottom = 372.809
 scale = Vector2(0.0552548, 0.0552548)
 text = "Upgrades"
 label_settings = SubResource("LabelSettings_o23ev")
+
+[node name="WardrobeButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -409.0
+offset_right = -17.0
+offset_bottom = -311.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.93592, 0.93592)
+mouse_filter = 1
+disabled = true
+texture_normal = ExtResource("9_1niyt")
+texture_disabled = ExtResource("9_md11i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="WardrobeButton"]
+layout_mode = 0
+offset_left = -13.8901
+offset_top = -34.1909
+offset_right = 2113.11
+offset_bottom = 372.809
+scale = Vector2(0.0552548, 0.0552548)
+text = "Wardrobe"
+label_settings = SubResource("LabelSettings_md11i")
+
+[node name="ShopButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -548.0
+offset_right = -17.0
+offset_bottom = -450.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.93592, 0.93592)
+mouse_filter = 1
+disabled = true
+texture_normal = ExtResource("10_gcpbw")
+texture_disabled = ExtResource("11_md11i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ShopButton"]
+layout_mode = 0
+offset_left = -13.8901
+offset_top = -34.1909
+offset_right = 2113.11
+offset_bottom = 372.809
+scale = Vector2(0.0552548, 0.0552548)
+text = "Shop"
+label_settings = SubResource("LabelSettings_62me3")
+horizontal_alignment = 1
 
 [node name="slingshotsuage" type="TextureProgressBar" parent="."]
 layout_mode = 1

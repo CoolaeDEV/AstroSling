@@ -9,6 +9,8 @@ class_name PlayUI
 @onready var play_button: TextureButton = $playButton
 @onready var quit_button: TextureButton = $quitButton
 @onready var upgrade_button: TextureButton = $UpgradeButton
+@onready var wardrobe_button: TextureButton = $WardrobeButton
+@onready var shop_button: TextureButton = $ShopButton
 
 @onready var coins: Label = $TextureRect2/Coins
 
@@ -31,11 +33,15 @@ func _process(_delta: float) -> void:
 			play_button.texture_normal = playingButtonTexture
 			quit_button.show()
 			upgrade_button.hide()
+			wardrobe_button.hide()
+			shop_button.hide()
 		else:
 			play_button.texture_normal = playbuttonTexture
 			quit_button.hide()
 			upgrade_button.show()
-
+			wardrobe_button.show()
+			shop_button.show()
+			
 func _onSlingShotDisableMouseEntered() -> void:
 	if player:
 		player.canSlingShot = false
@@ -58,3 +64,7 @@ func _on_quit_button_pressed() -> void:
 func _on_upgrade_button_pressed() -> void:
 	upgradeUI.animation_player.play("Open")
 	upgradeUI.isClosed = false
+	if upgradeUI.tutorialTimerStartedAlready == false:
+		upgradeUI.animation_player_2.play("TutorialStart")
+		upgradeUI.Tutorialtimer.start()
+		upgradeUI.tutorialTimerStartedAlready = true

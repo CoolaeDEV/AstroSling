@@ -15,7 +15,7 @@ config/version="v1.0"
 run/main_scene="uid://fotoh4n78dg0"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/show_image=false
-config/icon="uid://86427xlipljh"
+config/icon="uid://cp4t6xck2lyt"
 
 [autoload]
 
@@ -40,7 +40,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotAndroidHaptics/plugin.cfg", "res://addons/NotificationSchedulerPlugin/plugin.cfg", "res://addons/admob/plugin.cfg", "res://addons/godot_ui_animations/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/postfx/plugin.cfg", "res://addons/softbody2d/plugin.cfg", "res://addons/splash_screen_wizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotAndroidHaptics/plugin.cfg", "res://addons/NotificationSchedulerPlugin/plugin.cfg", "res://addons/godot_ui_animations/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/postfx/plugin.cfg", "res://addons/softbody2d/plugin.cfg", "res://addons/splash_screen_wizard/plugin.cfg")
 
 [file_customization]
 

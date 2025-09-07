@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjtkfc0h5kahe"]
+[gd_scene load_steps=35 format=3 uid="uid://cjtkfc0h5kahe"]
 
 [ext_resource type="Texture2D" uid="uid://ba7qrprnv4lpr" path="res://Modules/UI/Assets/UpgradesUI/UpgradeMenuBar.png" id="1_2mflv"]
 [ext_resource type="Script" uid="uid://c0w2dd15xms6n" path="res://Modules/UI/Scripts/UpgradesManager.gd" id="1_8beuh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4e1fed7npios" path="res://Modules/UI/Assets/UpgradesUI/InfoPanel.png" id="7_7puca"]
 [ext_resource type="Texture2D" uid="uid://bx5eetxi6yyqe" path="res://Modules/UI/Assets/UpgradesUI/Equipped.png" id="7_u1ey7"]
 [ext_resource type="Texture2D" uid="uid://c6swkm6kx58qh" path="res://Modules/UI/Assets/UpgradesUI/Quit.png" id="9_wj2fr"]
+[ext_resource type="Texture2D" uid="uid://d2akmx7m4o6qp" path="res://Modules/UI/Assets/UpgradesUI/CloseTutorial.png" id="11_0wthv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxw08"]
 font = ExtResource("4_dlrpp")
@@ -63,6 +64,101 @@ border_width_left = 3
 border_width_top = 2
 border_color = Color(0.294118, 0.301961, 0.423529, 1)
 corner_radius_top_left = 10
+
+[sub_resource type="Animation" id="Animation_u1ey7"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CloseButton:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.136356, 0.136356)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeMenuBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(658, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeMenuBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialCloseArea:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rc0gy"]
+resource_name = "TutorialEnd"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialCloseArea:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s3rkd"]
+resource_name = "TutorialStart"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialCloseArea:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0wthv"]
 resource_name = "Close"
@@ -168,62 +264,13 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_u1ey7"]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CloseButton:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CloseButton:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.136356, 0.136356)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UpgradeMenuBar:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(658, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UpgradeMenuBar:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1ey7"]
 _data = {
 &"Close": SubResource("Animation_0wthv"),
 &"Open": SubResource("Animation_wj2fr"),
-&"RESET": SubResource("Animation_u1ey7")
+&"RESET": SubResource("Animation_u1ey7"),
+&"TutorialEnd": SubResource("Animation_rc0gy"),
+&"TutorialStart": SubResource("Animation_s3rkd")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1ey7"]
@@ -428,6 +475,26 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 &"": SubResource("AnimationLibrary_u1ey7")
 }
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u1ey7")
+}
+
+[node name="TutorialCloseArea" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 146.0
+offset_right = 261.0
+offset_bottom = 1068.0
+scale = Vector2(1, 1.0584)
+texture = ExtResource("11_0wthv")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="TutorialCloseArea"]
+wait_time = 3.0
+one_shot = true
 
 [node name="CloseArea" type="Button" parent="."]
 layout_mode = 0

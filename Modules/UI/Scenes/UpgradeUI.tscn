@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cjtkfc0h5kahe"]
+[gd_scene load_steps=31 format=3 uid="uid://cjtkfc0h5kahe"]
 
 [ext_resource type="Texture2D" uid="uid://ba7qrprnv4lpr" path="res://Modules/UI/Assets/UpgradesUI/UpgradeMenuBar.png" id="1_2mflv"]
 [ext_resource type="Script" uid="uid://c0w2dd15xms6n" path="res://Modules/UI/Scripts/UpgradesManager.gd" id="1_8beuh"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dvkq0lo0qjwen" path="res://Modules/UI/Assets/UpgradesUI/UpgradeConfirm.png" id="3_i2uec"]
 [ext_resource type="Texture2D" uid="uid://d3juquwo8hds2" path="res://Modules/UI/Assets/UpgradesUI/UpgradesPanel.png" id="3_u1ey7"]
 [ext_resource type="FontFile" uid="uid://v5ppclwsn5md" path="res://Modules/UI/Assets/BlackHanSans-Regular.ttf" id="4_dlrpp"]
-[ext_resource type="Texture2D" uid="uid://blipimt0e0in8" path="res://Modules/UI/Assets/UpgradesUI/Info.png" id="6_mxw08"]
-[ext_resource type="Texture2D" uid="uid://c4e1fed7npios" path="res://Modules/UI/Assets/UpgradesUI/InfoPanel.png" id="7_7puca"]
 [ext_resource type="Texture2D" uid="uid://bx5eetxi6yyqe" path="res://Modules/UI/Assets/UpgradesUI/Equipped.png" id="7_u1ey7"]
 [ext_resource type="Texture2D" uid="uid://c6swkm6kx58qh" path="res://Modules/UI/Assets/UpgradesUI/Quit.png" id="9_wj2fr"]
 [ext_resource type="Texture2D" uid="uid://d2akmx7m4o6qp" path="res://Modules/UI/Assets/UpgradesUI/CloseTutorial.png" id="11_0wthv"]
@@ -37,25 +35,6 @@ outline_size = 85
 outline_color = Color(0.623529, 0.470588, 0.698039, 1)
 shadow_size = 171
 shadow_color = Color(0.447059, 0.337255, 0.501961, 1)
-shadow_offset = Vector2(0, 13.815)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7puca"]
-font = ExtResource("4_dlrpp")
-font_size = 406
-outline_size = 110
-outline_color = Color(0.415686, 0.427451, 0.627451, 1)
-shadow_size = 201
-shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
-shadow_offset = Vector2(0, 13.815)
-
-[sub_resource type="LabelSettings" id="LabelSettings_8beuh"]
-font = ExtResource("4_dlrpp")
-font_size = 406
-font_color = Color(0.909804, 0.870588, 1, 1)
-outline_size = 110
-outline_color = Color(0.415686, 0.427451, 0.627451, 1)
-shadow_size = 201
-shadow_color = Color(0.262745, 0.266667, 0.380392, 1)
 shadow_offset = Vector2(0, 13.815)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1ey7"]
@@ -365,22 +344,13 @@ texture_normal = ExtResource("3_i2uec")
 texture_disabled = ExtResource("7_u1ey7")
 stretch_mode = 0
 
-[node name="InfoButton" type="TextureRect" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
-layout_mode = 0
-offset_left = 288.806
-offset_top = 14.7377
-offset_right = 338.806
-offset_bottom = 64.7377
-scale = Vector2(0.711868, 0.711868)
-texture = ExtResource("6_mxw08")
-
 [node name="UpgradeCost" type="Label" parent="UpgradeMenuBar/ScrollContainer/VBoxContainer/SlingBoostUpgrade"]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 69.0
-offset_right = 1557.0
-offset_bottom = 365.0
-scale = Vector2(0.0791208, 0.0791208)
+offset_left = 94.2532
+offset_top = 65.5623
+offset_right = 1546.25
+offset_bottom = 361.562
+scale = Vector2(0.094647, 0.094647)
 text = "500"
 label_settings = SubResource("LabelSettings_u1ey7")
 horizontal_alignment = 1
@@ -394,40 +364,6 @@ offset_bottom = 353.476
 scale = Vector2(0.104473, 0.104473)
 text = "1x"
 label_settings = SubResource("LabelSettings_0wthv")
-horizontal_alignment = 1
-
-[node name="UpgradeInfoPanel" type="TextureRect" parent="UpgradeMenuBar"]
-visible = false
-layout_mode = 0
-offset_left = 0.109722
-offset_top = 4.43226
-offset_right = 617.11
-offset_bottom = 377.432
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_7puca")
-
-[node name="UpgradeName" type="Label" parent="UpgradeMenuBar/UpgradeInfoPanel"]
-layout_mode = 0
-offset_left = 110.0
-offset_top = 62.0
-offset_right = 2658.0
-offset_bottom = 469.0
-scale = Vector2(0.151516, 0.151516)
-text = "Sling Boost"
-label_settings = SubResource("LabelSettings_7puca")
-horizontal_alignment = 1
-
-[node name="UpgradeInfomation" type="Label" parent="UpgradeMenuBar/UpgradeInfoPanel"]
-layout_mode = 0
-offset_left = 62.0
-offset_top = 158.0
-offset_right = 6031.0
-offset_bottom = 1385.0
-scale = Vector2(0.084459, 0.084459)
-text = "This upgrade increases
-the power you boost each 
-time you slingshot"
-label_settings = SubResource("LabelSettings_8beuh")
 horizontal_alignment = 1
 
 [node name="UpgradeMenuBar2" type="TextureRect" parent="UpgradeMenuBar"]
@@ -494,7 +430,7 @@ texture = ExtResource("11_0wthv")
 expand_mode = 1
 
 [node name="Timer" type="Timer" parent="TutorialCloseArea"]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
 [node name="CloseArea" type="Button" parent="."]

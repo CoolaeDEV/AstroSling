@@ -14,6 +14,9 @@ class_name PlayUI
 @onready var top_bar: Control = $TopBar
 @onready var home_button: TextureButton = $HomeButton
 
+@onready var rcs_left: TextureButton = $RCSLeft
+@onready var rcs_right: TextureButton = $RCSRight
+
 @onready var coins: Label = $TopBar/TextureRect2/Coins
 
 
@@ -36,7 +39,7 @@ func _process(_delta: float) -> void:
 	if player:
 		if not player.universe.isFreeplayModeOn:
 			score.text = str(snapped(player.score, 0))
-			slingshotsuage.value = lerp(slingshotsuage.value, player.slingShotUsage, 0.05)
+			slingshotsuage.value = lerp(slingshotsuage.value, clamp(player.slingShotUsage, 0.0, 100.0), 0.05)
 			slingshotPercent.text = str(snapped(player.slingShotUsage, 0)) + "%"
 			high_score.text = str(snapped(player.HighScore, 0))
 			
@@ -46,16 +49,20 @@ func _process(_delta: float) -> void:
 			play_button.texture_normal = playingButtonTexture
 			quit_button.show()
 			upgrade_button.hide()
-			wardrobe_button.hide()
-			shop_button.hide()
+			#wardrobe_button.hide()
+			#shop_button.hide()
 			home_button.hide()
+			rcs_left.show()
+			rcs_right.show()
 		else:
 			play_button.texture_normal = playbuttonTexture
 			quit_button.hide()
 			upgrade_button.show()
-			wardrobe_button.show()
-			shop_button.show()
+			#wardrobe_button.show()
+			#shop_button.show()
 			home_button.show()
+			rcs_left.hide()
+			rcs_right.hide()
 			
 func _onSlingShotDisableMouseEntered() -> void:
 	if player:
@@ -91,3 +98,16 @@ func _on_home_button_pressed() -> void:
 	if not player.tutorialUI.doShowTutorial:
 		get_tree().change_scene_to_file("res://Modules/UI/Scenes/MainMenu.tscn")
 		player.NBodySim.queue_free() # This is the main root of the MainGame so deleting it kills the game
+
+func _on_rcs_left_button_down() -> void:
+	player.isUsingLeftThruster = true
+
+func _on_rcs_left_button_up() -> void:
+	player.isUsingLeftThruster = false
+
+
+func _on_rcs_right_button_down() -> void:
+	player.isUsingRightThruster = true
+
+func _on_rcs_right_button_up() -> void:
+	player.isUsingRightThruster = false

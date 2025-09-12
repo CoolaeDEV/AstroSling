@@ -60,11 +60,11 @@ initalVelocity = Vector2(0, -300)
 
 [node name="PlanetGenerator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_p30di")]
 position = Vector2(-3800, -3286)
-spawnArea = Rect2(0, 0, 8000, 6000)
-minRadius = 50.0
-maxRadius = 100.0
+spawnArea = Rect2(0, 0, 80000, 60000)
+minRadius = 500.0
+maxRadius = 1000.0
 maxPlanets = 5
-minSpacing = 100.0
+minSpacing = 10000.0
 player = NodePath("../Player")
 
 [node name="MainCamera" type="Camera2D" parent="."]
@@ -94,6 +94,8 @@ offset_bottom = 149.0
 player = NodePath("../../../Player")
 
 [node name="TutorialUi" parent="MainCamera/CanvasLayer" instance=ExtResource("9_p30di")]
+offset_top = 94.0
+offset_bottom = 94.0
 
 [node name="NearMisser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_qsjrb")]
 player = NodePath("../Player")

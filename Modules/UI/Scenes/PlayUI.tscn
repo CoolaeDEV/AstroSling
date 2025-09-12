@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://y6tjv5shi7a5"]
+[gd_scene load_steps=29 format=3 uid="uid://y6tjv5shi7a5"]
 
 [ext_resource type="Script" uid="uid://c7kvghby57635" path="res://Modules/UI/Scripts/PlayUIManager.gd" id="1_ba1qd"]
 [ext_resource type="FontFile" uid="uid://cxe0bbixqghmp" path="res://Modules/UI/Assets/Belanosima-Regular.ttf" id="2_asov5"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://b0jirjs0hta1t" path="res://Modules/UI/Assets/PlayUI/IndicatorIcons.png" id="8_qg725"]
 [ext_resource type="Texture2D" uid="uid://olncg1shgr4w" path="res://Modules/UI/Assets/PlayUI/Wardrobe.png" id="9_1niyt"]
 [ext_resource type="Texture2D" uid="uid://biwiv42g8k0ru" path="res://Modules/UI/Assets/PlayUI/Home.png" id="9_2guva"]
+[ext_resource type="Texture2D" uid="uid://3qqbfsbmxun2" path="res://Modules/UI/Assets/PlayUI/RCSLeft.png" id="9_hbbmj"]
 [ext_resource type="Texture2D" uid="uid://b4wbgya56ysj" path="res://Modules/UI/Assets/PlayUI/WardrobeDisabled.png" id="9_md11i"]
 [ext_resource type="Texture2D" uid="uid://q4q1kmj7ulvn" path="res://Modules/UI/Assets/PlayUI/Shop.png" id="10_gcpbw"]
+[ext_resource type="Texture2D" uid="uid://bbfpcx2wkvdc" path="res://Modules/UI/Assets/PlayUI/RCSRight.png" id="10_mw601"]
 [ext_resource type="Texture2D" uid="uid://bpe4adm26aptj" path="res://Modules/UI/Assets/PlayUI/ShopDisabled.png" id="11_md11i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asov5"]
@@ -25,20 +27,20 @@ border_color = Color(0.254902, 0.254902, 0.254902, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ba1qd"]
 font = ExtResource("2_dq65k")
 font_size = 216
-outline_size = 35
+outline_size = 55
 outline_color = Color(0.277528, 0.277528, 0.277528, 1)
 shadow_size = 51
 shadow_color = Color(0.20871, 0.20871, 0.20871, 1)
-shadow_offset = Vector2(0, 2)
+shadow_offset = Vector2(0, 12.81)
 
 [sub_resource type="LabelSettings" id="LabelSettings_asov5"]
 font = ExtResource("2_dq65k")
 font_size = 216
-outline_size = 40
+outline_size = 25
 outline_color = Color(0.226707, 0.226707, 0.226707, 1)
-shadow_size = 51
-shadow_color = Color(0.172833, 0.172833, 0.172833, 1)
-shadow_offset = Vector2(0, 2)
+shadow_size = 56
+shadow_color = Color(0.165656, 0.165656, 0.165656, 1)
+shadow_offset = Vector2(1, 7.455)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dq65k"]
 font = ExtResource("2_asov5")
@@ -263,16 +265,57 @@ scale = Vector2(0.0552548, 0.0552548)
 text = "Upgrades"
 label_settings = SubResource("LabelSettings_o23ev")
 
+[node name="RCSLeft" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -344.0
+offset_right = -49.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.27736, 1.27736)
+mouse_filter = 1
+texture_normal = ExtResource("9_hbbmj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RCSRight" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -344.0
+offset_right = 89.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.27736, 1.27736)
+mouse_filter = 1
+texture_normal = ExtResource("10_mw601")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="HomeButton" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -92.9999
-offset_top = 490.0
-offset_right = -2.99994
-offset_bottom = 588.0
+anchor_bottom = 1.0
+offset_left = -89.9999
+offset_top = -379.0
+offset_right = -6.10352e-05
+offset_bottom = -281.0
 grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(0.62999, 0.62999)
 mouse_filter = 1
 texture_normal = ExtResource("9_2guva")
@@ -291,6 +334,7 @@ label_settings = SubResource("LabelSettings_2guva")
 horizontal_alignment = 1
 
 [node name="WardrobeButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -321,6 +365,7 @@ text = "Wardrobe"
 label_settings = SubResource("LabelSettings_md11i")
 
 [node name="ShopButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -390,8 +435,18 @@ label_settings = SubResource("LabelSettings_qg725")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="playButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="quitButton" to="." method="_onSlingShotDisableMouseEntered"]
+[connection signal="mouse_exited" from="quitButton" to="." method="_onSlingShotDisableMouseExited"]
 [connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="button_down" from="RCSLeft" to="." method="_on_rcs_left_button_down"]
+[connection signal="button_up" from="RCSLeft" to="." method="_on_rcs_left_button_up"]
+[connection signal="mouse_entered" from="RCSLeft" to="." method="_onSlingShotDisableMouseEntered"]
+[connection signal="mouse_exited" from="RCSLeft" to="." method="_onSlingShotDisableMouseExited"]
+[connection signal="button_down" from="RCSRight" to="." method="_on_rcs_right_button_down"]
+[connection signal="button_up" from="RCSRight" to="." method="_on_rcs_right_button_up"]
+[connection signal="mouse_entered" from="RCSRight" to="." method="_onSlingShotDisableMouseEntered"]
+[connection signal="mouse_exited" from="RCSRight" to="." method="_onSlingShotDisableMouseExited"]
 [connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="mouse_entered" from="slingshotsuage" to="." method="_onSlingShotDisableMouseEntered"]
 [connection signal="mouse_exited" from="slingshotsuage" to="." method="_onSlingShotDisableMouseExited"]

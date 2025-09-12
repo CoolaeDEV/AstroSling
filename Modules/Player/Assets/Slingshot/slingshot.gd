@@ -25,6 +25,8 @@ func _ready():
 func _process(_delta: float) -> void:
 	if draggin:
 		if player.NBodySim.running and player.canSlingShot:
+			player.cpu_particles_2d.emitting = true
+			player.cpu_particles_2d_2.emitting = true
 			# zoom out while dragging
 			player.camera.zoom = player.camera.zoom.lerp(zoom_out_factor, zoom_lerp_speed)
 
@@ -51,10 +53,12 @@ func _process(_delta: float) -> void:
 		# reset zoom + offset when not dragging
 		player.camera.zoom = player.camera.zoom.lerp(zoom_normal, zoom_lerp_speed)
 		player.camera.offset = player.camera.offset.lerp(Vector2.ZERO, offset_lerp_speed)
+		player.cpu_particles_2d.emitting = false
+		player.cpu_particles_2d_2.emitting = false
 
 
 func _input(event: InputEvent) -> void:
-	if player:
+	if player and player.canSlingShot:
 		if player.NBodySim.running:
 			if Input.is_action_just_pressed("click"):
 				vecStart = get_global_mouse_position()
@@ -65,8 +69,9 @@ func _input(event: InputEvent) -> void:
 			if player and player.canSlingShot:
 				if player.NBodySim.running:
 					player.currentVelocity += (vecStart - vecFinish) * player.slingShotPowerMultipler / 800
-					var subtractedPowerUsage = snapped((vecStart - vecFinish).length() / player.slingShotDepletionMultiplier, 0)
-					player.slingShotUsage -= subtractedPowerUsage
+					if not player.universe.isFreeplayModeOn:
+						var subtractedPowerUsage = snapped((vecStart - vecFinish).length() / player.slingShotDepletionMultiplier, 0)
+						player.slingShotUsage -= subtractedPowerUsage
 					player.NBodySim.currentTimewarp = previousTimewarp
 					draggin = false
 			clear_points()

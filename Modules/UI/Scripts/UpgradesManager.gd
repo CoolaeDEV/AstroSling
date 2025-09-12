@@ -45,6 +45,7 @@ func _on_close_button_pressed() -> void:
 	if not isClosed:
 		animation_player.play("Close")
 
+
 func _onUpgradeButtonClicked(upgradeName: String, upgradeButtonPath: NodePath, upgradeCost: int) -> void:
 	if not player.tutorialUI.doShowTutorial:
 		match upgradeName:

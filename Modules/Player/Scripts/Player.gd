@@ -25,6 +25,7 @@ var maxVelocity : float
 @export var coinMultiplier : int = 1.5
 @export var slingShotDepletionMultiplier : float = 100.0
 @export var slingShotPowerMultipler : float = 150.0
+@export var jetThrusterMultiplier : float = 1.0
 
 var upgrades : Array = []
 		# "UpgradeImage": preload(image_path),
@@ -51,8 +52,14 @@ var slingShotUsage : float = 100.0
 var score := 0.0
 var HighScore := 0.0
 
-@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
-@onready var cpu_particles_2d_2: CPUParticles2D = $CPUParticles2D2
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D2
+@onready var cpu_particles_2d_2: CPUParticles2D = $CPUParticles2D3
+
+@onready var jet_thurster_left: CPUParticles2D = $jetThursterLeft
+@onready var jet_thruster_right: CPUParticles2D = $jetThrusterRight
+
+var isUsingLeftThruster := false
+var isUsingRightThruster := false
 
 func _ready():
 	if get_parent() is NBodySimulation:
@@ -67,8 +74,7 @@ func _ready():
 
 func _process(_delta: float) -> void:
 	if NBodySim.running:
-		cpu_particles_2d.emitting = true
-		cpu_particles_2d_2.emitting = true
+
 		if crashed:
 			if resetUI:
 				resetUI.show()
@@ -88,12 +94,31 @@ func _process(_delta: float) -> void:
 		
 		if slingShotUsage <= 0:
 			canSlingShot = false
+			slingShotUsage = 0
+		
+		if isUsingLeftThruster and not slingShotUsage <= 0:
+			jet_thurster_left.emitting = true
+			currentVelocity -= Vector2(cos(rotation), sin(rotation)) * jetThrusterMultiplier
+			slingShotUsage -= 0.05
+		else:
+			jet_thurster_left.emitting = false
+
+		if isUsingRightThruster and not slingShotUsage <= 0:
+			jet_thruster_right.emitting = true
+			currentVelocity += Vector2(cos(rotation), sin(rotation)) * jetThrusterMultiplier
+			slingShotUsage -= 0.05
+		else:
+			jet_thruster_right.emitting = false
+
 	else:
 		camera.zoom = lerp(camera.zoom, Vector2(6,6), 0.5)
 		trajectoryVisualizer.hide()
 		planetIndic.hide()
 		cpu_particles_2d.emitting = false
 		cpu_particles_2d_2.emitting = false
+		
+		jet_thurster_left.emitting = false
+		jet_thruster_right.emitting = false
 
 func checkUpgradesAndApply():
 	upgrades.all(func(i):
